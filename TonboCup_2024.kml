@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.1">
+  <Document>
+    <Folder>
+      <name>Waypoints</name>
+      <Placemark>
+        <name>ATC082</name>
+        <description>A Arena</description>
+        <Point>
+        <coordinates>138.583083,35.384167,824.000000</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>DTC071</name>
+        <description>D Tank</description>
+        <Point>
+        <coordinates>138.555167,35.371917,716.000000</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>ETC087</name>
+        <description>E Kaicho MaeOne</description>
+        <Point>
+        <coordinates>138.551167,35.374611,872.000000</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FTC075</name>
+        <description>F Mochiya</description>
+        <Point>
+        <coordinates>138.576528,35.371444,752.000000</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>GTC072</name>
+        <description>G Haka</description>
+        <Point>
+        <coordinates>138.562139,35.372556,722.000000</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>HTC070</name>
+        <description>H Jyujiro</description>
+        <Point>
+        <coordinates>138.558750,35.366361,705.000000</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>JTC071</name>
+        <description>J Old LD</description>
+        <Point>
+        <coordinates>138.555639,35.372722,717.000000</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>KTC117</name>
+        <description>K TO</description>
+        <Point>
+        <coordinates>138.539222,35.375639,1175.000000</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>LDT071</name>
+        <description>LD New LD</description>
+        <Point>
+        <coordinates>138.553111,35.369028,713.000000</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>MTC138</name>
+        <description>M Tetto</description>
+        <Point>
+        <coordinates>138.530500,35.368556,1382.000000</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NTC160</name>
+        <description>N Yukimi Top</description>
+        <Point>
+        <coordinates>138.535611,35.389667,1605.000000</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>OTC095</name>
+        <description>O Jinba One</description>
+        <Point>
+        <coordinates>138.552222,35.362139,951.000000</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>PTC133</name>
+        <description>P Choujya Top</description>
+        <Point>
+        <coordinates>138.534722,35.341222,1335.000000</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>QTC092</name>
+        <description>Q Azumaya</description>
+        <Point>
+        <coordinates>138.552111,35.348194,922.000000</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>RTC133</name>
+        <description>R Tenshi Top</description>
+        <Point>
+        <coordinates>138.536778,35.329000,1330.000000</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>TOT107</name>
+        <description>TO Tonbo TO</description>
+        <Point>
+        <coordinates>138.546194,35.375167,1071.000000</coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1"
+     creator="GpsDump 5.43"
+     version="1.1"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <link href="http://www.gethome.no/stein.sorensen/">
+      <text>GPS dump for www.flightlog.org</text>
+    </link>
+    <time>2022-11-29T13:12:06Z</time>
+    <bounds minlat="35.329000" minlon="138.530500" maxlat="35.389667" maxlon="138.576528"/>
+  </metadata>
+  <wpt lat="35.384167" lon="138.583083">
+    <ele>824.0</ele>
+    <time>2024-07-12T21:00:00</time>
+    <name>ATC082</name>
+    <cmt>A Arena</cmt>
+    <desc>A Arena</desc>
+    <sym>Dot</sym>
+  </wpt>
+  <wpt lat="35.371917" lon="138.555167">
+    <ele>717.0</ele>
+    <time>2024-07-12T21:00:00</time>
+    <name>DTC071</name>
+    <cmt>D Tank</cmt>
+    <desc>D Tank</desc>
+    <sym>Dot</sym>
+  </wpt>
+  <wpt lat="35.374611" lon="138.551167">
+    <ele>872.0</ele>
+    <time>2024-07-12T21:00:00</time>
+    <name>ETC087</name>
+    <cmt>E Kaicho MaeOne</cmt>
+    <desc>E Kaicho MaeOne</desc>
+    <sym>Dot</sym>
+  </wpt>
+  <wpt lat="35.371444" lon="138.576528">
+    <ele>752.0</ele>
+    <time>2024-07-12T21:00:00</time>
+    <name>FTC075</name>
+    <cmt>F Mochiya</cmt>
+    <desc>F Mochiya</desc>
+    <sym>Dot</sym>
+  </wpt>
+  <wpt lat="35.372556" lon="138.562139">
+    <ele>722.0</ele>
+    <time>2024-07-12T21:00:00</time>
+    <name>GTC072</name>
+    <cmt>G Haka</cmt>
+    <desc>G Haka</desc>
+    <sym>Dot</sym>
+  </wpt>
+  <wpt lat="35.366361" lon="138.558750">
+    <ele>705.0</ele>
+    <time>2024-07-12T21:00:00</time>
+    <name>HTC070</name>
+    <cmt>H Jyujiro</cmt>
+    <desc>H Jyujiro</desc>
+    <sym>Dot</sym>
+  </wpt>
+  <wpt lat="35.372722" lon="138.555639">
+    <ele>717.0</ele>
+    <time>2024-07-12T21:00:00</time>
+    <name>JTC071</name>
+    <cmt>J Old LD</cmt>
+    <desc>J Old LD</desc>
+    <sym>Dot</sym>
+  </wpt>
+  <wpt lat="35.375639" lon="138.539222">
+    <ele>1175.0</ele>
+    <time>2024-07-12T21:00:00</time>
+    <name>KTC117</name>
+    <cmt>K Hang TO</cmt>
+    <desc>K Hang TO</desc>
+    <sym>Dot</sym>
+  </wpt>
+  <wpt lat="35.369028" lon="138.553111">
+    <ele>713.0</ele>
+    <time>2024-07-12T21:00:00</time>
+    <name>LDT071</name>
+    <cmt>LD New LD</cmt>
+    <desc>LD New LD</desc>
+    <sym>Dot</sym>
+  </wpt>
+  <wpt lat="35.368556" lon="138.530500">
+    <ele>1382.0</ele>
+    <time>2024-07-12T21:00:00</time>
+    <name>MTC138</name>
+    <cmt>M Tetto</cmt>
+    <desc>M Tetto</desc>
+    <sym>Dot</sym>
+  </wpt>
+  <wpt lat="35.389667" lon="138.535611">
+    <ele>1605.0</ele>
+    <time>2024-07-12T21:00:00</time>
+    <name>NTC160</name>
+    <cmt>N Yukimi Top</cmt>
+    <desc>N Yukimi Top</desc>
+    <sym>Dot</sym>
+  </wpt>
+  <wpt lat="35.362139" lon="138.552222">
+    <ele>951.0</ele>
+    <time>2024-07-12T21:00:00</time>
+    <name>OTC095</name>
+    <cmt>O Jinba one</cmt>
+    <desc>O Jinba one</desc>
+    <sym>Dot</sym>
+  </wpt>
+  <wpt lat="35.341222" lon="138.534722">
+    <ele>1335.0</ele>
+    <time>2024-07-12T21:00:00</time>
+    <name>PTC133</name>
+    <cmt>P Choujya Top</cmt>
+    <desc>P Choujya Top</desc>
+    <sym>Dot</sym>
+  </wpt>
+  <wpt lat="35.348194" lon="138.552111">
+    <ele>922.0</ele>
+    <time>2024-07-12T21:00:00</time>
+    <name>QTC092</name>
+    <cmt>Q Azumaya</cmt>
+    <desc>Q Azumaya</desc>
+    <sym>Dot</sym>
+  </wpt>
+  <wpt lat="35.329000" lon="138.536778">
+    <ele>1330.0</ele>
+    <time>2024-07-12T21:00:00</time>
+    <name>RTC133</name>
+    <cmt>R Tenshi Top</cmt>
+    <desc>R Tenshi Top</desc>
+    <sym>Dot</sym>
+  </wpt>
+  <wpt lat="35.375167" lon="138.546194">
+    <ele>1071.0</ele>
+    <time>2024-07-12T21:00:00</time>
+    <name>TOT107</name>
+    <cmt>TO Tonbo TO</cmt>
+    <desc>TO Tonbo TO</desc>
+    <sym>Dot</sym>
+  </wpt>
+</gpx>
