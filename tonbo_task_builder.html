@@ -46,6 +46,25 @@
   button:hover{border-color:#CBD5E1;background:var(--line-2)}
   select:focus-visible,button:focus-visible,.chip:focus-visible{outline:2px solid #0891B2;outline-offset:2px}
 
+  .cls-select{position:relative}
+  .cls-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:.75rem;
+    font:inherit;font-size:.9rem;font-weight:600;color:var(--ink);text-align:left;
+    padding:.8rem 1rem;border:1.5px solid var(--line);border-radius:8px;background:var(--card);cursor:pointer}
+  .cls-trigger:hover{border-color:#CBD5E1;background:var(--card)}
+  .cls-trigger:focus-visible{outline:2px solid #0891B2;outline-offset:2px}
+  .cls-select.open .cls-trigger{border-color:var(--deep)}
+  .cls-caret{font-size:.6rem;color:var(--muted);transition:transform .15s ease}
+  .cls-select.open .cls-caret{transform:rotate(180deg)}
+  .cls-list{position:absolute;z-index:60;top:calc(100% + .35rem);left:0;right:0;
+    margin:0;padding:.35rem;list-style:none;background:var(--card);
+    border:1.5px solid var(--line);border-radius:8px;box-shadow:0 10px 28px rgba(15,23,42,.12);
+    max-height:60vh;overflow-y:auto}
+  .cls-list li{padding:.65rem .8rem;border-radius:6px;cursor:pointer}
+  .cls-list li b{display:block;font-size:.86rem;font-weight:700;color:var(--ink)}
+  .cls-list li span{display:block;font-size:.72rem;color:var(--muted);margin-top:.2rem;line-height:1.5}
+  .cls-list li.active{background:var(--line-2)}
+  .cls-list li[aria-selected="true"] b{color:var(--deep)}
+
   /* ── パイロンアイコン（競技内容ページのバッジ準拠） ── */
   .chip{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;
     width:3.3rem;height:3.3rem;border-radius:10px;background:#F1F5F9;border:1.5px solid var(--line);
@@ -140,15 +159,19 @@
 
 <div class="wrap">
   <div class="card">
-    <div class="controls" style="margin-bottom:0">
-      <div><label for="cls">クラス</label>
-        <select id="cls">
-          <option value="AB">A・B クラス</option>
-          <option value="C">C クラス</option>
-          <option value="D">D クラス</option>
-          <option value="S">S クラス</option>
-        </select>
-      </div>
+    <h2>🪂 クラス</h2>
+    <div class="cls-select" id="clsSelect">
+      <button type="button" id="clsBtn" class="cls-trigger" role="combobox"
+              aria-haspopup="listbox" aria-expanded="false" aria-controls="clsList">
+        <span id="clsLabel">A・B クラス</span>
+        <span class="cls-caret" aria-hidden="true">▼</span>
+      </button>
+      <ul class="cls-list" id="clsList" role="listbox" aria-label="クラス" hidden>
+        <li role="option" data-v="AB" aria-selected="true"><b>A・B クラス</b><span>EN-A / EN-B / LFT1 / LFT1-2 / タンデム</span></li>
+        <li role="option" data-v="C" aria-selected="false"><b>C クラス</b><span>EN-C / LFT2</span></li>
+        <li role="option" data-v="D" aria-selected="false"><b>D クラス</b><span>EN-D / LFT2-3</span></li>
+        <li role="option" data-v="S" aria-selected="false"><b>S クラス</b><span>CCC / Jリーグシード / 前回優勝者</span></li>
+      </ul>
     </div>
   </div>
 
@@ -360,7 +383,33 @@ function removePylon(idx){
   core.splice(idx,1);render();
 }
 
-$('#cls').addEventListener('change',e=>{cls=e.target.value;render();});
+/* クラス選択：説明文を2行目に出すため native select ではなく自前のリストボックス */
+(()=>{
+  const box=$('#clsSelect'), btn=$('#clsBtn'), list=$('#clsList'), label=$('#clsLabel');
+  const opts=[...list.querySelectorAll('[role="option"]')];
+  let active=0;
+  const isOpen=()=>box.classList.contains('open');
+  const mark=()=>opts.forEach((o,i)=>o.classList.toggle('active',i===active));
+  const open=()=>{active=Math.max(0,opts.findIndex(o=>o.dataset.v===cls));
+    box.classList.add('open');list.hidden=false;btn.setAttribute('aria-expanded','true');mark();};
+  const close=()=>{box.classList.remove('open');list.hidden=true;btn.setAttribute('aria-expanded','false');};
+  const pick=i=>{const o=opts[i];cls=o.dataset.v;label.textContent=o.querySelector('b').textContent;
+    opts.forEach(x=>x.setAttribute('aria-selected',x===o?'true':'false'));
+    close();btn.focus();render();};
+  btn.addEventListener('click',()=>isOpen()?close():open());
+  opts.forEach((o,i)=>{
+    o.addEventListener('click',()=>pick(i));
+    o.addEventListener('mousemove',()=>{active=i;mark();});
+  });
+  btn.addEventListener('keydown',e=>{
+    if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();
+      if(!isOpen()){open();return;}
+      active=(active+(e.key==='ArrowDown'?1:opts.length-1))%opts.length;mark();}
+    else if(e.key==='Enter'||e.key===' '){e.preventDefault();isOpen()?pick(active):open();}
+    else if(e.key==='Escape'&&isOpen()){close();}
+  });
+  document.addEventListener('click',e=>{if(!box.contains(e.target))close();});
+})();
 $('#clear').addEventListener('click',()=>{core=[];render();});
 
 
