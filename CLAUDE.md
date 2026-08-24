@@ -18,16 +18,20 @@ GitHub Pagesで公開中：`https://kmrism.github.io/tombocup/`
 - `kyogi-naiyou.html`（競技内容）
 - `pylon-data.html`（パイロンデータ・ウェイポイントDL）
 - `pylon-map.html`（パイロンマップ）
-- `osusume-task.html`（おすすめタスク）
-- `tonbo_task_builder.html`（タスクビルダー。**JS使用の唯一のページ**）
+- `osusume-task.html`（おすすめタスク。クラス切替のため**JS使用**）
+- `tonbo_task_builder.html`（タスクビルダー。**JS使用**）
 - ダウンロード用アセット：`Pylon_Map.jpg` / `.pdf`、`TomboCup2026_Taikai_Yoko.pdf`、
   `TomboCup2026_Kyogi_Naiyou.pdf`、`TonboCup_2024.wpt` / `TonboCupGeo_2024.wpt` / `.cup` / `.gpx` / `.kml`
 
 ## コーディング規約（厳守）
-- **インラインCSSのみ。** `<style>` タグの例外は次の2つだけ：
+- **インラインCSSのみ。** `<style>` タグの例外は次の3つだけ：
   - Google Fontsの `<link>`（Cinzel Decorative、TOMBOロゴ見出し用）
   - トップページのSVG写真スライドショーのkeyframesアニメーション
-- **`<script>` タグは `tonbo_task_builder.html` 以外で使わない。** 他は全ページ静的HTML
+  - `osusume-task.html` / `tonbo_task_builder.html` のクラス選択リストボックス
+    （`:hover` `.active` `[aria-selected]` など、style属性では書けない状態指定が必要）
+- **`<script>` タグは `tonbo_task_builder.html` と `osusume-task.html` のみ。** 他は静的HTML
+  - `osusume-task.html` はクラス切替のためだけにJSを使う。JS無効でも
+    `<noscript>` で全クラスのタスクが並んで見えるようにしてある（機能を殺さない）
 - 色・フォント・余白は全てstyle属性に直接指定する（外部CSSファイルなし）
 
 ## デザイントークン
@@ -61,8 +65,12 @@ GitHub Pagesで公開中：`https://kmrism.github.io/tombocup/`
 - 「QRコードを表示」はXCTrack `.xctsk` 形式（QR形式2、`XCTSK:` + JSON）を生成
   - 座標はGoogle polyline整数エンコード（公式 `go-xctrack` のテストベクターと一致検証済み）
   - D=SSS（type 2）、最終地点=ESS（type 3）、TOは1番目のTP（XCTrackが自動でTAKEOFF扱いする仕様）
-  - エラップスタイム、WGS-84（`e:0`）、ゴールはシリンダー、半径200m、
-    スタート/テイクオフ開放9:00、タスク終了17:00、QRの色は黒
+  - エラップスタイム、WGS-84（`e:0`）、ゴールはシリンダー、半径200m、QRの色は黒
+  - **時刻はUTC固定**（`HH:MM:SSZ` の9文字。公式仕様書 Competition Interfaces に明記。
+    ローカル時刻やオフセットは書けない）。`tod()` が日本時間をUTCに変換して出力する。
+    スタート/テイクオフ開放 **9:00 JST**（=`00:00:00Z`）、
+    タスク終了 **16:00 JST**（=`07:00:00Z`）。
+    JSTのまま `09:00:00Z` と書くと18:00 JST扱いになる — 実際に起きたバグ
   - `cdnjs` の qrcodejs に依存 → オフラインでは表示不可（インターネット接続下で動作確認）
 
 ## 大会情報（事実関係）

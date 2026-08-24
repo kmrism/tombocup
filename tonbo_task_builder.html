@@ -427,7 +427,10 @@ function encZ(lon,lat,alt,radius){
         +plEncInt(Math.round(alt))+plEncInt(Math.round(radius));
 }
 const QR_RADIUS=200;           // 各パイロンのシリンダー半径
-function tod(h,m,s){ return String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')+'Z'; }
+// XCTSK は時刻を UTC 固定で持つ仕様（HH:MM:SSZ / 公式仕様書 Competition Interfaces）。
+// ローカル時刻やオフセットは書けないため、日本時間(JST=UTC+9)を UTC に変換して書き出す。
+function tod(h,m,s){ const u=(h-9+24)%24;
+  return String(u).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')+'Z'; }
 
 function buildXCTSK(){
   const seq=sequence();                         // TO, D, E自動…, LD を含む実際の並び
@@ -444,9 +447,9 @@ function buildXCTSK(){
   const task={
     taskType:'CLASSIC', version:2,
     t:tps,
-    to:tod(9,0,0),                               // テイクオフ開放 9:00
-    s:{g:[tod(9,0,0)], d:1, t:2},                // SSS: ELAPSED-TIME(2), ENTER(1), ゲート9:00
-    g:{d:tod(17,0,0), t:2},                      // Goal: シリンダー(2), 締切17:00
+    to:tod(9,0,0),                               // テイクオフ開放 9:00 JST
+    s:{g:[tod(9,0,0)], d:1, t:2},                // SSS: ELAPSED-TIME(2), ENTER(1), ゲート9:00 JST
+    g:{d:tod(16,0,0), t:2},                      // Goal: シリンダー(2), 締切16:00 JST
     e:0                                          // WGS84
   };
   return 'XCTSK:'+JSON.stringify(task);
