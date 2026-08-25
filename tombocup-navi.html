@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TomboCupナビ | TOMBO CUP 2026</title>
+</head>
+<body style="margin:0;padding:0;background:#F8FAFC;color:#0F172A;font-family:system-ui,-apple-system,sans-serif;">
+<nav style="position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,0.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid #E2E8F0;padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between;"><a href="index.html" style="font-size:1rem;font-weight:900;letter-spacing:0.12em;color:#0C4A6E;text-decoration:none;text-transform:uppercase;">Tombo Cup</a><a href="index.html" style="font-size:0.8rem;font-weight:600;color:#64748B;text-decoration:none;">← Back</a></nav><div style="background:linear-gradient(135deg,#0C4A6E 0%,#164E63 40%,#0891B2 80%,#06B6D4 100%);padding:8rem 2rem 4.5rem;text-align:center;overflow:hidden;"><div style="display:inline-block;font-size:0.65rem;font-weight:700;letter-spacing:0.35em;text-transform:uppercase;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.2);border-radius:3px;padding:0.28rem 0.8rem;margin-bottom:1.4rem;">TomboCup Navi</div><h1 style="font-size:clamp(2.2rem,6vw,3.8rem);font-weight:900;color:#fff;margin:0 0 0.6rem;letter-spacing:-0.02em;line-height:1.1;">TomboCupナビ</h1><p style="color:rgba(255,255,255,0.6);font-size:0.85rem;letter-spacing:0.08em;margin:0;">キャッツクレイドル専用 ナビゲーション＆自動得点アプリ</p></div><div style="max-width:900px;margin:0 auto;padding:3rem 1.5rem 5rem;">
+
+<div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:1.75rem;margin-bottom:1.25rem;box-shadow:0 1px 3px rgba(0,0,0,0.05);"><div style="font-size:0.92rem;line-height:1.9;color:#334155;"><span style="font-size:1.1rem;">&#129666;</span> <strong style="color:#0F172A;">キャッツクレイドル専用の Android ナビゲーション／自動得点アプリです。</strong><br><br>飛びながら「今何点か」「次はどこか」「E に戻ったか」を暗算しなくて済むようにするのが目的です。GPS で 200m シリンダーの出入りを判定し、大会ルールをそのまま実装しています。<br><br><span style="color:#64748B;font-size:0.85rem;">本アプリの得点はあくまで目安です。公式記録は主催者の集計によります。</span></div></div>
+
+<div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:1.75rem;margin-bottom:1.25rem;box-shadow:0 1px 3px rgba(0,0,0,0.05);"><div style="font-size:0.95rem;font-weight:800;color:#0F172A;margin-bottom:1.2rem;padding-bottom:0.85rem;border-bottom:1px solid #E2E8F0;display:flex;align-items:center;gap:0.5rem;">&#128229; ダウンロード</div>
+  <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.25rem;">
+    <div>
+      <div style="font-size:0.92rem;font-weight:800;color:#0F172A;">TomboCupナビ 0.9.8</div>
+      <div style="font-size:0.78rem;color:#64748B;margin-top:0.15rem;">Android 8.0 以降／約 45MB／APK 直接インストール</div>
+    </div>
+    <a href="TomboCupNavi_0.9.8.apk" download="TomboCupナビ 0.9.8.apk" style="display:inline-flex;align-items:center;gap:0.5rem;background:linear-gradient(135deg,#0891B2,#0C4A6E);color:#fff;font-size:0.85rem;font-weight:700;text-decoration:none;border-radius:8px;padding:0.7rem 1.6rem;white-space:nowrap;box-shadow:0 3px 12px rgba(8,145,178,0.3);">&#11015; APKをダウンロード</a>
+  </div>
+  <div style="font-size:0.82rem;color:#64748B;line-height:1.8;padding-left:0.85rem;border-left:3px solid #0891B2;">Google Play 以外からのインストールになるため、初回は「提供元不明のアプリ」の許可を求められます。ブラウザやファイルアプリに対してインストールを許可してください。<br>iOS 版はありません（Android 専用）。</div>
+</div>
+
+<div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:1.75rem;margin-bottom:1.25rem;box-shadow:0 1px 3px rgba(0,0,0,0.05);"><div style="font-size:0.95rem;font-weight:800;color:#0F172A;margin-bottom:1.2rem;padding-bottom:0.85rem;border-bottom:1px solid #E2E8F0;display:flex;align-items:center;gap:0.5rem;">&#9881;&#65039; フライト前（設定画面）</div>
+  <ul style="margin:0;padding-left:1.2rem;font-size:0.88rem;color:#334155;line-height:1.9;">
+    <li><strong style="color:#0F172A;">満点</strong>の入力（大会当日 TO で発表される値）</li>
+    <li><strong style="color:#0F172A;">クラス選択</strong>（A・B / C / D / S）— プルダウンで選ぶと得点表が切り替わります</li>
+    <li><strong style="color:#0F172A;">タスク入力</strong>は2通り
+      <ul style="margin:0.35rem 0;padding-left:1.2rem;">
+        <li><strong>QRスキャン</strong> — <a href="tonbo_task_builder.html" style="color:#0891B2;font-weight:600;text-decoration:none;">タスク作成ページ</a>が出す XCTrack QR（<code style="background:#F1F5F9;border-radius:4px;padding:0.1rem 0.35rem;font-size:0.82em;">.xctsk</code> 形式2）をそのまま読み込みます</li>
+        <li><strong>パイロンを並べる</strong> — タップで未使用 ⇄ フライトプランを出し入れ。長押しして掴むと好きな位置へ移動でき、掴んでいる間はどこに入るかを紺色の線で1本表示します</li>
+        <li>TO・D（スタート）・E・LD（ゴール）は自動で入ります</li>
+      </ul>
+    </li>
+    <li>タスク通りの得点と、満点までの差を表示</li>
+    <li>地図プレビュー（＋／−／全体 ボタンで拡大縮小）</li>
+    <li><strong style="color:#0F172A;">シミュレーション</strong> — GPS 無しで合成トラックを流し、全機能を地上で確認できます。再生速度は飛行画面の「速度」ボタンで 遅／中／早 に変更可能</li>
+  </ul>
+</div>
+
+<div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:1.75rem;margin-bottom:1.25rem;box-shadow:0 1px 3px rgba(0,0,0,0.05);"><div style="font-size:0.95rem;font-weight:800;color:#0F172A;margin-bottom:1.2rem;padding-bottom:0.85rem;border-bottom:1px solid #E2E8F0;display:flex;align-items:center;gap:0.5rem;">&#9992;&#65039; 飛行中</div>
+  <ul style="margin:0;padding-left:1.2rem;font-size:0.88rem;color:#334155;line-height:1.9;">
+    <li>スタートからの<strong style="color:#0F172A;">経過時間</strong>と<strong style="color:#0F172A;">積み上がった合計得点</strong>を画面上部に常時表示（右下に満点も併記）</li>
+    <li><strong style="color:#0F172A;">次のパイロン</strong>（記号・名称・シリンダー縁までの距離・方位）。案内はタスクの並びをそのままなぞります。予定にないパイロンをたまたま通っても案内は進みません</li>
+    <li>案内線はシリンダーの中心ではなく、<strong style="color:#0F172A;">200m 円のいちばん近いところ</strong>を指します</li>
+    <li>地図に自機・次パイロンのシリンダー・最短ルート・飛行トラックを表示。全パイロンの 200m シリンダーを半透明で描き、次のパイロンだけ濃くします</li>
+    <li>地図の向きは「進行方向が上」（既定）／「北が上」を切り替え可能。向きと縮尺は次のフライトにも引き継がれます</li>
+    <li><strong style="color:#0F172A;">画面の1/4を5秒間</strong>覆うバナー＋通知音でパイロン取得・E 帰還・LD 通過を知らせます。次にどこを目指すかも大きく表示します</li>
+    <li>通知音は端末の<strong style="color:#0F172A;">メディア音量</strong>に従います。マナーモード時とメディア音量 0 のときは鳴りません</li>
+    <li><strong style="color:#0F172A;">リスタート</strong>ボタン（地図左端の赤い札）を2秒以内に3回タップすると、それまでの通過を捨てて D から取り直せます</li>
+  </ul>
+</div>
+
+<div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:1.75rem;margin-bottom:1.25rem;box-shadow:0 1px 3px rgba(0,0,0,0.05);"><div style="font-size:0.95rem;font-weight:800;color:#0F172A;margin-bottom:1.2rem;padding-bottom:0.85rem;border-bottom:1px solid #E2E8F0;display:flex;align-items:center;gap:0.5rem;">&#127937; ランディング後</div>
+  <ul style="margin:0;padding-left:1.2rem;font-size:0.88rem;color:#334155;line-height:1.9;">
+    <li><strong style="color:#0F172A;">タスクタイム</strong>（スタート＝D 脱出 から ゴール＝LD 侵入 まで）</li>
+    <li>有効通過パイロンの一覧（通過順・記号・名称・得点・通過時刻）</li>
+    <li>合計得点／満点との差</li>
+    <li>加点されなかった通過とその理由</li>
+    <li>リスタートしていれば、打ち切った過去のフライトも「◯回目のフライト」として同じ形式で並びます</li>
+  </ul>
+  <div style="font-size:0.82rem;color:#64748B;line-height:1.8;margin-top:1rem;padding-left:0.85rem;border-left:3px solid #0891B2;">LD はシリンダーに入った時点で得点になりますが、フライトはそこで終わりません。「ランディング完了」を押すまで次のパイロンを案内し続けます。</div>
+</div>
+
+<div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:1.75rem;margin-bottom:1.25rem;box-shadow:0 1px 3px rgba(0,0,0,0.05);"><div style="font-size:0.95rem;font-weight:800;color:#0F172A;margin-bottom:1.2rem;padding-bottom:0.85rem;border-bottom:1px solid #E2E8F0;display:flex;align-items:center;gap:0.5rem;">&#128203; 実装している競技ルール</div>
+<div style="overflow-x:auto;border-radius:8px;border:1px solid #E2E8F0;"><table style="width:100%;border-collapse:collapse;">
+<thead><tr>
+<th style="background:#F1F5F9;color:#334155;font-weight:700;font-size:0.75rem;padding:0.58rem 0.7rem;text-align:left;border-bottom:2px solid #E2E8F0;min-width:12em;">ルール</th>
+<th style="background:#F1F5F9;color:#334155;font-weight:700;font-size:0.75rem;padding:0.58rem 0.7rem;text-align:left;border-bottom:2px solid #E2E8F0;">実装</th>
+</tr></thead>
+<tbody>
+<tr><td style="padding:0.55rem 0.7rem;border-bottom:1px solid #F1F5F9;font-size:0.82rem;color:#334155;">(1) 合計得点で競う。順番は任意</td><td style="padding:0.55rem 0.7rem;border-bottom:1px solid #F1F5F9;font-size:0.82rem;color:#334155;">タスク順でなくても有効なら加点する</td></tr>
+<tr><td style="padding:0.55rem 0.7rem;border-bottom:1px solid #F1F5F9;font-size:0.82rem;color:#334155;">(2) シリンダー半径 200m</td><td style="padding:0.55rem 0.7rem;border-bottom:1px solid #F1F5F9;font-size:0.82rem;color:#334155;">既定 200m（QR に半径があればそちらを優先）</td></tr>
+<tr><td style="padding:0.55rem 0.7rem;border-bottom:1px solid #F1F5F9;font-size:0.82rem;color:#334155;">(3) 満点は当日発表</td><td style="padding:0.55rem 0.7rem;border-bottom:1px solid #F1F5F9;font-size:0.82rem;color:#334155;">設定画面で入力</td></tr>
+<tr><td style="padding:0.55rem 0.7rem;border-bottom:1px solid #F1F5F9;font-size:0.82rem;color:#334155;">(4) ゴールしていない場合は0点</td><td style="padding:0.55rem 0.7rem;border-bottom:1px solid #F1F5F9;font-size:0.82rem;color:#334155;">結果画面は公式得点0と参考得点を併記</td></tr>
+<tr><td style="padding:0.55rem 0.7rem;border-bottom:1px solid #F1F5F9;font-size:0.82rem;color:#334155;">(7) 各パイロン得点は1回のみ</td><td style="padding:0.55rem 0.7rem;border-bottom:1px solid #F1F5F9;font-size:0.82rem;color:#334155;">2回目以降は理由付きで除外</td></tr>
+<tr><td style="padding:0.55rem 0.7rem;border-bottom:1px solid #F1F5F9;font-size:0.82rem;color:#334155;">(8) 各パイロンをとったら必ず E に戻る</td><td style="padding:0.55rem 0.7rem;border-bottom:1px solid #F1F5F9;font-size:0.82rem;color:#334155;">E に戻るまで次のパイロンは取れない</td></tr>
+<tr><td style="padding:0.55rem 0.7rem;border-bottom:1px solid #F1F5F9;font-size:0.82rem;color:#334155;">(9) スタート D ／ゴール LD</td><td style="padding:0.55rem 0.7rem;border-bottom:1px solid #F1F5F9;font-size:0.82rem;color:#334155;">D シリンダーの<strong>脱出</strong>で計時開始。LD シリンダーに<strong>入った時点</strong>でゴール</td></tr>
+<tr><td style="padding:0.55rem 0.7rem;font-size:0.82rem;color:#334155;">(10) ゴール直前のパイロンは E 帰還不要</td><td style="padding:0.55rem 0.7rem;font-size:0.82rem;color:#334155;">最終区間はゴールで確定する</td></tr>
+</tbody></table></div>
+<p style="font-size:0.8rem;color:#64748B;margin-top:0.9rem;padding-left:0.85rem;border-left:3px solid #0891B2;line-height:1.7;">得点計算は大会の公式集計マクロに合わせてあります。ルール文だけでは決まらない細部（同点のとき／取り直したとき／LD のあと飛び続けたとき）は、すべてマクロの挙動を正としています。ただし<strong>マクロは最終得点を満点で頭打ちにしますが、本アプリはしません</strong>。</p>
+</div>
+
+<div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:1.75rem;margin-bottom:1.25rem;box-shadow:0 1px 3px rgba(0,0,0,0.05);"><div style="font-size:0.95rem;font-weight:800;color:#0F172A;margin-bottom:1.2rem;padding-bottom:0.85rem;border-bottom:1px solid #E2E8F0;display:flex;align-items:center;gap:0.5rem;">&#128200; 得点計算の細部</div>
+  <ul style="margin:0;padding-left:1.2rem;font-size:0.88rem;color:#334155;line-height:1.9;">
+    <li><strong style="color:#0F172A;">D はスタートで取ったものとして確定</strong>します。その後に何度 D のシリンダーを通っても無視されます</li>
+    <li>得点が入るのは<strong style="color:#0F172A;">「D でスタート → E に戻る」を済ませてから</strong>です。スタート前の通過と、スタート後に E へ戻る前の通過は加点されません（LD を除く）</li>
+    <li><strong style="color:#0F172A;">区間内で2つ目に入ったパイロンは、得点が高いときだけ差し替わります</strong>。同点なら先に取ったほうが残ります</li>
+    <li><strong style="color:#0F172A;">取り直しても振り直しはしません。</strong> <code style="background:#F1F5F9;border-radius:4px;padding:0.1rem 0.35rem;font-size:0.82em;">D → E → G → H → E → G → LD</code> は1区間目の G だけが有効です（H は G より低いので無視、2周目の G は取得済み）</li>
+    <li><strong style="color:#0F172A;">LD を通過したあと E に入る／新しいパイロンを取ると、ゴールが取り消されます。</strong> もう一度 LD に入り直せばゴールになります</li>
+  </ul>
+</div>
+
+<div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:1.75rem;margin-bottom:1.25rem;box-shadow:0 1px 3px rgba(0,0,0,0.05);"><div style="font-size:0.95rem;font-weight:800;color:#0F172A;margin-bottom:1.2rem;padding-bottom:0.85rem;border-bottom:1px solid #E2E8F0;display:flex;align-items:center;gap:0.5rem;">&#9888;&#65039; このエリア固有の注意</div>
+  <div style="font-size:0.88rem;color:#334155;line-height:1.9;">
+    <div style="margin-bottom:1.1rem;"><strong style="color:#0F172A;">1. D（タンク）と J（旧とんぼLD）は約 99m しか離れていません</strong><br>200m シリンダーが完全に重なるので、D を取ると必ず J にも入ります。ただしスタート前・E 帰還前の通過は加点されないため、この J は無効になります。J を取るには、E に戻ったあとで改めて J へ行く必要があります。</div>
+    <div><strong style="color:#0F172A;">2. E → O を直線で飛ぶと LD シリンダーを横切ります</strong>（中心まで約 133m）<br>おすすめタスクの <code style="background:#F1F5F9;border-radius:4px;padding:0.1rem 0.35rem;font-size:0.82em;">TO D E K E G E H E J E O LD</code> がこれに該当します。ここで LD の得点はいったん入りますが、続けて O を取った時点で公式マクロどおり取り消され、最後にもう一度 LD へ入ったところで改めてゴールになります。本アプリは「ランディング完了」を押すまでフライトを終わらせないので、途中で LD を横切っても案内は O まで続き、1020pt を取り切れます。</div>
+  </div>
+</div>
+
+<div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:1.75rem;margin-bottom:1.25rem;box-shadow:0 1px 3px rgba(0,0,0,0.05);"><div style="font-size:0.95rem;font-weight:800;color:#0F172A;margin-bottom:1.2rem;padding-bottom:0.85rem;border-bottom:1px solid #E2E8F0;display:flex;align-items:center;gap:0.5rem;">&#128241; 動作条件・注意</div>
+  <ul style="margin:0;padding-left:1.2rem;font-size:0.88rem;color:#334155;line-height:1.9;">
+    <li>位置情報の許可（フォアグラウンド）と通知の許可が必要です。飛行中は画面が消えない設定になります</li>
+    <li>地図タイルは一度表示したものが端末に残ります。<strong style="color:#0F172A;">離陸前に設定画面の地図を競技エリア一帯まで動かして表示させておく</strong>と、圏外でもその範囲は表示できます</li>
+    <li>アプリが落ちても、シリンダーの出入りは都度保存しているので再起動して続きから再開できます</li>
+    <li>位置情報は Play Services を使わず GPS を直接読むので、圏外でも Google Play が無い端末でも動きます</li>
+  </ul>
+  <div style="font-size:0.82rem;color:#64748B;line-height:1.8;margin-top:1rem;padding-left:0.85rem;border-left:3px solid #94A3B8;"><strong>今回入れていないもの：</strong>IGC ログ出力（大会要綱の必要装備。ナビ機能とは独立）／昇降率・対地速度などのフライトインストルメント／iOS 版</div>
+</div>
+
+</div>
+<footer style="background:#0C4A6E;color:rgba(255,255,255,0.5);text-align:center;padding:3rem 2rem 3.25rem;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;"><div style="font-size:1.1rem;font-weight:900;color:rgba(255,255,255,0.9);letter-spacing:0.15em;margin-bottom:0.5rem;">TOMBO CUP 2026</div>Paragliding Competition · Fujinomiya, Shizuoka<div style="margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.12);"><div style="text-transform:none;letter-spacing:0.02em;font-size:0.82rem;color:rgba(255,255,255,0.65);margin-bottom:0.95rem;">ご質問・お問い合わせはこちらから</div><a href="https://docs.google.com/forms/d/e/1FAIpQLSfoMTUH72hzGhfOlBiHGyojamJ6L9VttmLLAF4RAxQaVIwg_A/viewform" target="_blank" style="display:inline-flex;align-items:center;gap:0.55rem;background:linear-gradient(135deg,#06B6D4,#0891B2);color:#fff;font-size:0.72rem;font-weight:800;letter-spacing:0.05em;text-transform:none;text-decoration:none;border-radius:10px;padding:0.85rem 2rem;box-shadow:0 5px 22px rgba(8,145,178,0.55);">✉️ とんぼカップ専用 問い合わせフォーム</a></div></footer>
+</body>
+</html>
