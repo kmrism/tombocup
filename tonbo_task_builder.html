@@ -66,21 +66,28 @@
   .cls-list li[aria-selected="true"] b{color:var(--deep)}
 
   /* ── パイロンアイコン（競技内容ページのバッジ準拠） ── */
-  .chip{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;
-    width:3.3rem;height:3.3rem;border-radius:10px;background:#F1F5F9;border:1.5px solid var(--line);
+  .chip{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:.04rem;
+    width:2.25rem;height:3.19rem;padding:0 .05rem;border-radius:6px;background:var(--card);
+    border:1.5px solid var(--line);box-shadow:0 1px 2px rgba(15,23,42,.05);
     color:#334155;cursor:grab;user-select:none;
     transition:transform .12s,box-shadow .12s,opacity .12s}
-  .chip .code{font-size:1.05rem;font-weight:800;line-height:1;letter-spacing:.02em}
-  .chip .pt{font-size:.82rem;font-weight:800;color:var(--ink);margin-top:.3rem;line-height:1}
-  .chip .pt small{font-size:.58rem;font-weight:700;color:var(--muted);margin-left:1px}
+  .chip .code{font-size:.98rem;font-weight:800;line-height:1.08;letter-spacing:.01em;color:var(--ink)}
+  .chip .nm{font-size:.64rem;font-weight:700;color:var(--muted);line-height:1.15;letter-spacing:-.02em;max-width:100%;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .chip .pt{font-size:.92rem;font-weight:800;color:#334155;line-height:1.08}
   .chip:hover{transform:translateY(-2px);box-shadow:0 4px 10px rgba(15,23,42,.10)}
   .chip.dragging{opacity:.35}
   .chip.used{opacity:.35;filter:grayscale(1);cursor:not-allowed;pointer-events:none;transform:none}
-  .chip.to{background:#EFF6FF;border-color:#C7DDF5;color:#1E40AF;cursor:default}
-  .chip.ld{background:#F0FDF4;border-color:#86EFAC;color:#166534;cursor:default}
+  .chip.to{background:#EEF2FF;border-color:#C7D2FE;cursor:default}
+  .chip.to .code{color:#1E293B}
+  .chip.ld,.chip.dd{background:#F0FDF4;border-color:#BBF7D0}
+  .chip.ld{cursor:default}
+  .chip.ld .code,.chip.dd .code{color:#94A3B8}
   .chip.e{background:#FDE9A8;border-color:#E8C96A;color:#8A6D1A;cursor:not-allowed;
-    width:2.8rem;height:2.8rem;border-radius:50%}
-  .chip.e .pt{margin-top:.15rem}
+    width:1.275rem;height:1.275rem;border-radius:50%;box-shadow:none;padding:0;flex-shrink:0}
+  .chip.e .code{color:#8A6D1A;font-size:.7rem;font-weight:700;line-height:1}
+  .chip.e .nm{display:none}
+  .chip.e .pt{display:none}
   .chip.to:hover,.chip.ld:hover,.chip.e:hover{transform:none;box-shadow:none}
 
   #prep{display:flex;flex-wrap:wrap;gap:.5rem}
@@ -88,11 +95,11 @@
   #task{display:flex;align-items:center;flex-wrap:wrap;min-height:6rem;padding:.75rem .4rem;
     border:1.5px dashed #CBD5E1;border-radius:10px;background:#FCFDFE}
   #task.over{border-color:#0891B2;background:#F0FBFE}
-  .slot{flex:0 0 1.7rem;width:1.7rem;height:3.3rem;position:relative;
+  .slot{flex:0 0 1.3rem;width:1.3rem;height:3.19rem;position:relative;
     display:flex;align-items:center;justify-content:center}
   .slot::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
     width:3px;height:0;border-radius:2px;background:#0891B2;transition:height .12s}
-  .slot.active::after{height:3.3rem}
+  .slot.active::after{height:3.19rem}
   .slot.active .arw{opacity:0}
   .arw{display:block;width:1.5rem;height:1.5rem;color:#0891B2;transition:opacity .12s}
   .arw svg{display:block;width:100%;height:100%}
@@ -137,9 +144,9 @@
   @media (prefers-reduced-motion:reduce){*{transition:none!important}}
   @media(max-width:560px){
     nav{padding:0 1rem}.hero{padding:6.5rem 1.25rem 3.5rem}.card{padding:1.25rem}
-    .chip{width:3.1rem;height:3.1rem}.chip.e{width:2.6rem;height:2.6rem}
-    .slot{flex-basis:1.1rem;width:1.1rem;height:3.1rem}
-    .slot.active::after{height:3.1rem}.link{flex-basis:1.1rem;width:1.1rem}
+    .chip{width:2.03rem;height:2.87rem}.chip.e{width:1.275rem;height:1.275rem}
+    .slot{flex-basis:0.85rem;width:0.85rem;height:2.87rem}
+    .slot.active::after{height:2.87rem}.link{flex-basis:1.1rem;width:1.1rem}
     .arw{width:1.1rem;height:1.1rem}
   }
 </style>
@@ -218,7 +225,7 @@
 <script>
 const DATA={
   TO:{name:'テイクオフ', lat:35.3751667,lon:138.5461945,alt:1071, AB:0,  C:0,  D:0,  S:0,  cls:'to'},
-  D :{name:'タンク', lat:35.3719167,lon:138.555167,alt:716,      AB:50, C:50, D:40, S:30},
+  D :{name:'タンク', lat:35.3719167,lon:138.555167,alt:716,      AB:50, C:50, D:40, S:30, cls:'dd'},
   A :{name:'アリーナ', lat:35.3841667,lon:138.5830833,alt:824,    AB:600,C:540,D:480,S:420},
   E :{name:'怪鳥尾根', lat:35.3746112,lon:138.5511667,alt:872,    AB:0,  C:0,  D:0,  S:0,  cls:'e'},
   F :{name:'もちや', lat:35.3714445,lon:138.5765277,alt:752,      AB:400,C:360,D:320,S:280},
@@ -243,6 +250,8 @@ let core=[];        // ユーザーが置いたパイロン（D は常に先頭�
 let dragSrc=null, dropIdx=null, routeText='';
 
 const ARROW='<span class="arw"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h14M12 5.5 18.5 12 12 18.5" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
+const SHORT={A:'アリー',D:'タンク',E:'',F:'もちや',G:'お墓',H:'農道',J:'旧とん',K:'ハング',
+  M:'鉄塔',N:'雪見',O:'陣馬',P:'長者',Q:'東屋',R:'天子',TO:'テイク',LD:'ランデ'};
 const $=s=>document.querySelector(s);
 const taskEl=$('#task'), prepEl=$('#prep');
 
@@ -269,7 +278,7 @@ function sequence(){
 function chip(code,extra){
   const d=document.createElement('div');
   d.className='chip '+(DATA[code].cls||'')+' '+extra;
-  d.innerHTML=`<span class="code">${code}</span><span class="pt">${pt(code)}<small>pt</small></span>`;
+  d.innerHTML=`<span class="code">${code}</span>`+(code==='E'?``:`<span class="nm">${SHORT[code]||''}</span><span class="pt">${code==='TO'?'&mdash;':pt(code)}</span>`);
   return d;
 }
 
