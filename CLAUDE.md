@@ -79,7 +79,7 @@ GitHub Pagesで公開中：`https://kmrism.github.io/tombocup/`
 - 主催：とんぼカップ大会実行委員会／後援：静岡県フライヤー連盟／
   実行委員長：遠藤聡／競技委員長：阿知波広和
 - 参加費：とんぼクラブ会員3,000円・ビジター6,000円（非課税）／申込締切：2026年10月16日(金)
-- エントリー：とんぼ会員→`https://works.do/FkmhEgs`／ビジター→`https://form.run/@tombocup`
+- エントリー：とんぼ会員→`https://form.run/@tombocup-member`／ビジター→`https://form.run/@tombocup`
 - 問い合わせフォーム（全ページのフッターに設置。シアングラデーションの目立つボタン）：
   `https://docs.google.com/forms/d/e/1FAIpQLSfoMTUH72hzGhfOlBiHGyojamJ6L9VttmLLAF4RAxQaVIwg_A/viewform`
 
