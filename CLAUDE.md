@@ -88,14 +88,17 @@ GitHub Pagesで公開中：`https://kmrism.github.io/tombocup/`
 
 ## エントリー受付（Apps Script ＋ スプレッドシート）
 - フォームは `<form method="post">` で Apps Script ウェブアプリ（`https://script.google.com/macros/s/AKfycbwO2dHcwlbc441Fw0pp_8xtqQv-reqakjZKxMAK5UK6JBFX4LX73yy212ws_AiX20nj/exec`）へ送信
-- 書き込み先：Googleスプレッドシート「2026 参加者管理 得点申告表 受付表」（ドライブ「とんぼクラブ」フォルダ）の `Sheet1`。
-  form.runの書き出しと同じ縦持ちレイアウト（値の行 4,6,9,12…84、ラベルはその1行上）で1申込＝1列。`参加者一覧` 以下の既存数式はこれを参照している
+- 書き込み先：Googleスプレッドシート「2026 参加者管理 得点申告表 受付表」（ドライブ「とんぼクラブ」フォルダ）の `参加者一覧`。
+  1申込＝1行（名前が空の最初の行）を**値で**書き込む。手動の修正・加筆も `参加者一覧` で直接行う（`Sheet1` は廃止・削除済み）。
+  列：E No. / F 申込日時 / G・H クラブ員・ビジター◯ / I 名前 … AB LT24 / AC 郵便番号。`受付用` などは `参加者一覧` を参照している
 - 空欄・「-」の項目は `参照データ` シート（2024/2025参加者・2026クラブ員名簿・安全セミナー受講者を氏名で統合）から補足し、セルを黄色＋メモにする
 - 受付のたびに `受付ログ` シートに記録し、`kimura.ath.cx@gmail.com` へ通知メール。**申込者への自動メールは送らない**（連絡は手動。会員はLINE WORKS）
 - 申込締切による自動停止はしない。エントリーページ・完了画面に参加費は表示しない
 - コードの控え：`C:UserskimurDesktopClaudeとんぼカップ2026 参加者管理エントリー受付_GAS.gs`（Apps Scriptプロジェクト「とんぼカップ2026 エントリー受付」。
   スプレッドシートとは独立し、`SPREADSHEET_ID` で接続）。コードを変えたら「デプロイを管理 → 編集 → 新バージョン」でURLを変えずに再デプロイ
-- フォームの項目名（name属性）はGASの `ROWS` のキーと一致させること
+- フォームの項目名（name属性）はGASの `FIELDS` と一致させること
+- GASの `doGet?action=pilots&key=…` は IGC ダウンローダー（`TombocupNavi/tools/IGC ダウンローダー`）用に
+  No.・氏名・クラス・XContest・Volandoo・LT24 だけをJSONで返す（合言葉は GAS の `CONFIG.PILOTS_KEY`／ダウンローダーの `config.json`）
 - 問い合わせフォーム（全ページのフッターに設置。シアングラデーションの目立つボタン）：
   `https://docs.google.com/forms/d/e/1FAIpQLSfoMTUH72hzGhfOlBiHGyojamJ6L9VttmLLAF4RAxQaVIwg_A/viewform`
 
