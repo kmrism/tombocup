@@ -20,6 +20,8 @@ GitHub Pagesで公開中：`https://kmrism.github.io/tombocup/`
 - `pylon-map.html`（パイロンマップ）
 - `osusume-task.html`（おすすめタスク。クラス切替のため**JS使用**）
 - `tonbo_task_builder.html`（タスクビルダー。**JS使用**）
+- `entry-member.html`（エントリー・とんぼ会員用）／`entry-visitor.html`（エントリー・ビジター用）
+  JSなしの静的フォーム。送信先はApps Scriptのウェブアプリ（下記「エントリー受付」）
 - ダウンロード用アセット：`Pylon_Map.jpg` / `.pdf`、`TomboCup2026_Taikai_Yoko.pdf`、
   `TomboCup2026_Kyogi_Naiyou.pdf`、`TonboCup_2024.wpt` / `TonboCupGeo_2024.wpt` / `.cup` / `.gpx` / `.kml`
 
@@ -79,7 +81,18 @@ GitHub Pagesで公開中：`https://kmrism.github.io/tombocup/`
 - 主催：とんぼカップ大会実行委員会／後援：静岡県フライヤー連盟／
   実行委員長：遠藤聡／競技委員長：阿知波広和
 - 参加費：とんぼクラブ会員3,000円・ビジター6,000円（非課税）／申込締切：2026年10月16日(金)
-- エントリー：とんぼ会員→`https://form.run/@tombocup-member`／ビジター→`https://form.run/@tombocup`
+- エントリー：サイト内の `entry-member.html`（会員）／`entry-visitor.html`（ビジター）。form.runは廃止
+
+## エントリー受付（Apps Script ＋ スプレッドシート）
+- フォームは `<form method="post">` で Apps Script ウェブアプリ（`https://script.google.com/macros/s/AKfycbwO2dHcwlbc441Fw0pp_8xtqQv-reqakjZKxMAK5UK6JBFX4LX73yy212ws_AiX20nj/exec`）へ送信
+- 書き込み先：Googleスプレッドシート「2026 参加者管理 得点申告表 受付表」（ドライブ「とんぼクラブ」フォルダ）の `Sheet1`。
+  form.runの書き出しと同じ縦持ちレイアウト（値の行 4,6,9,12…84、ラベルはその1行上）で1申込＝1列。`参加者一覧` 以下の既存数式はこれを参照している
+- 空欄・「-」の項目は `参照データ` シート（2024/2025参加者・2026クラブ員名簿・安全セミナー受講者を氏名で統合）から補足し、セルを黄色＋メモにする
+- 受付のたびに `受付ログ` シートに記録し、`kimura.ath.cx@gmail.com` へ通知メール。**申込者への自動メールは送らない**（連絡は手動。会員はLINE WORKS）
+- 申込締切による自動停止はしない
+- コードの控え：`C:UserskimurDesktopClaudeとんぼカップ2026 参加者管理エントリー受付_GAS.gs`（Apps Scriptプロジェクト「とんぼカップ2026 エントリー受付」。
+  スプレッドシートとは独立し、`SPREADSHEET_ID` で接続）。コードを変えたら「デプロイを管理 → 編集 → 新バージョン」でURLを変えずに再デプロイ
+- フォームの項目名（name属性）はGASの `ROWS` のキーと一致させること
 - 問い合わせフォーム（全ページのフッターに設置。シアングラデーションの目立つボタン）：
   `https://docs.google.com/forms/d/e/1FAIpQLSfoMTUH72hzGhfOlBiHGyojamJ6L9VttmLLAF4RAxQaVIwg_A/viewform`
 
