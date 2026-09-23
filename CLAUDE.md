@@ -32,6 +32,8 @@ GitHub Pagesで公開中：`https://kmrism.github.io/tombocup/`
   - `osusume-task.html` / `tonbo_task_builder.html` のクラス選択リストボックス
     （`:hover` `.active` `[aria-selected]` など、style属性では書けない状態指定が必要）
 - **`<script>` タグは `tonbo_task_builder.html` と `osusume-task.html` のみ。** 他は静的HTML
+  - 例外：`entry-visitor.html` は郵便番号→都道府県・市区町村の自動入力だけにJSを使う
+    （zipcloud API `https://zipcloud.ibsnet.co.jp/api/search?zipcode=`、CORS対応を確認済み）。JS無効でも手入力で送信できる
   - `osusume-task.html` はクラス切替のためだけにJSを使う。JS無効でも
     `<noscript>` で全クラスのタスクが並んで見えるようにしてある（機能を殺さない）
 - 色・フォント・余白は全てstyle属性に直接指定する（外部CSSファイルなし）
@@ -89,7 +91,7 @@ GitHub Pagesで公開中：`https://kmrism.github.io/tombocup/`
   form.runの書き出しと同じ縦持ちレイアウト（値の行 4,6,9,12…84、ラベルはその1行上）で1申込＝1列。`参加者一覧` 以下の既存数式はこれを参照している
 - 空欄・「-」の項目は `参照データ` シート（2024/2025参加者・2026クラブ員名簿・安全セミナー受講者を氏名で統合）から補足し、セルを黄色＋メモにする
 - 受付のたびに `受付ログ` シートに記録し、`kimura.ath.cx@gmail.com` へ通知メール。**申込者への自動メールは送らない**（連絡は手動。会員はLINE WORKS）
-- 申込締切による自動停止はしない
+- 申込締切による自動停止はしない。エントリーページ・完了画面に参加費は表示しない
 - コードの控え：`C:UserskimurDesktopClaudeとんぼカップ2026 参加者管理エントリー受付_GAS.gs`（Apps Scriptプロジェクト「とんぼカップ2026 エントリー受付」。
   スプレッドシートとは独立し、`SPREADSHEET_ID` で接続）。コードを変えたら「デプロイを管理 → 編集 → 新バージョン」でURLを変えずに再デプロイ
 - フォームの項目名（name属性）はGASの `ROWS` のキーと一致させること
