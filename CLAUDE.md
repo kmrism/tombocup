@@ -32,7 +32,8 @@ GitHub Pagesで公開中：`https://kmrism.github.io/tombocup/`
   - `osusume-task.html` / `tonbo_task_builder.html` のクラス選択リストボックス
     （`:hover` `.active` `[aria-selected]` など、style属性では書けない状態指定が必要）
 - **`<script>` タグは `tonbo_task_builder.html` と `osusume-task.html` のみ。** 他は静的HTML
-  - 例外：`entry-visitor.html` は郵便番号→都道府県・市区町村の自動入力だけにJSを使う
+  - 例外：`entry-visitor.html` は ①郵便番号→都道府県・市区町村の自動入力 ②生年月日カレンダーを1990年1月から開く
+    （空欄時だけ仮に1990-01-01を入れ、選ばずに離れたら空に戻す）の2つだけにJSを使う
     （zipcloud API `https://zipcloud.ibsnet.co.jp/api/search?zipcode=`、CORS対応を確認済み）。JS無効でも手入力で送信できる
   - `osusume-task.html` はクラス切替のためだけにJSを使う。JS無効でも
     `<noscript>` で全クラスのタスクが並んで見えるようにしてある（機能を殺さない）
