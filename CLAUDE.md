@@ -22,6 +22,7 @@ GitHub Pagesで公開中：`https://kmrism.github.io/tombocup/`
 - `tonbo_task_builder.html`（タスクビルダー。**JS使用**）
 - `entry-member.html`（エントリー・とんぼ会員用）／`entry-visitor.html`（エントリー・ビジター用）
   JSなしの静的フォーム。送信先はApps Scriptのウェブアプリ（下記「エントリー受付」）
+- `contact.html`（とんぼカップ専用 問い合わせフォーム。JSなし。送信先は同じApps Script、`type=contact`）
 - ダウンロード用アセット：`Pylon_Map.jpg` / `.pdf`、`TomboCup2026_Taikai_Yoko.pdf`、
   `TomboCup2026_Kyogi_Naiyou.pdf`、`TonboCup_2024.wpt` / `TonboCupGeo_2024.wpt` / `.cup` / `.gpx` / `.kml`
 
@@ -101,8 +102,9 @@ GitHub Pagesで公開中：`https://kmrism.github.io/tombocup/`
 - フォームの項目名（name属性）はGASの `FIELDS` と一致させること
 - GASの `doGet?action=pilots&key=…` は IGC ダウンローダー（`TombocupNavi/tools/IGC ダウンローダー`）用に
   No.・氏名・クラス・XContest・Volandoo・LT24 だけをJSONで返す（合言葉は GAS の `CONFIG.PILOTS_KEY`／ダウンローダーの `config.json`）
-- 問い合わせフォーム（全ページのフッターに設置。シアングラデーションの目立つボタン）：
-  `https://docs.google.com/forms/d/e/1FAIpQLSfoMTUH72hzGhfOlBiHGyojamJ6L9VttmLLAF4RAxQaVIwg_A/viewform`
+- 問い合わせフォーム：サイト内の `contact.html`（全ページのフッターにシアングラデーションの目立つボタンで設置。Googleフォームは廃止）。
+  項目は氏名・メールアドレス・お問い合わせ内容（すべて必須）。GASがスプレッドシートの `問い合わせ` シートに記録し、
+  `kimura.ath.cx@gmail.com` へ通知（返信先＝問い合わせた人。通知メールにそのまま返信すれば相手に届く）。完了画面の見本は `?preview=contact`
 
 ## 編集後に必ず確認すること
 1. `<div>` と `</div>` の数が一致しているか（div開閉の収支）
