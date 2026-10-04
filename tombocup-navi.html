@@ -17,10 +17,10 @@
 <div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:1.75rem;margin-bottom:1.25rem;box-shadow:0 1px 3px rgba(0,0,0,0.05);"><div style="font-size:0.95rem;font-weight:800;color:#0F172A;margin-bottom:1.2rem;padding-bottom:0.85rem;border-bottom:1px solid #E2E8F0;display:flex;align-items:center;gap:0.5rem;">&#128229; ダウンロード</div>
   <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.25rem;">
     <div>
-      <div style="font-size:0.92rem;font-weight:800;color:#0F172A;">TomboCupナビ 0.9.9</div>
+      <div style="font-size:0.92rem;font-weight:800;color:#0F172A;">TomboCupナビ 0.9.10</div>
       <div style="font-size:0.78rem;color:#64748B;margin-top:0.15rem;">Android 8.0 以降／約 45MB／APK 直接インストール</div>
     </div>
-    <a href="TomboCupNavi_0.9.9.apk" download="TomboCupナビ 0.9.9.apk" style="display:inline-flex;align-items:center;gap:0.5rem;background:linear-gradient(135deg,#0891B2,#0C4A6E);color:#fff;font-size:0.85rem;font-weight:700;text-decoration:none;border-radius:8px;padding:0.7rem 1.6rem;white-space:nowrap;box-shadow:0 3px 12px rgba(8,145,178,0.3);">&#11015; APKをダウンロード</a>
+    <a href="TomboCupNavi_0.9.10.apk" download="TomboCupナビ 0.9.10.apk" style="display:inline-flex;align-items:center;gap:0.5rem;background:linear-gradient(135deg,#0891B2,#0C4A6E);color:#fff;font-size:0.85rem;font-weight:700;text-decoration:none;border-radius:8px;padding:0.7rem 1.6rem;white-space:nowrap;box-shadow:0 3px 12px rgba(8,145,178,0.3);">&#11015; APKをダウンロード</a>
   </div>
   <div style="font-size:0.82rem;color:#64748B;line-height:1.8;padding-left:0.85rem;border-left:3px solid #0891B2;">Google Play 以外からのインストールになるため、初回は「提供元不明のアプリ」の許可を求められます。ブラウザやファイルアプリに対してインストールを許可してください。<br>iOS 版はありません（Android 専用）。</div>
 </div>
@@ -58,6 +58,12 @@
     <li><strong style="color:#0F172A;">画面の1/4を5秒間</strong>覆うバナー＋通知音でパイロン取得・E 帰還・LD 通過を知らせます。次にどこを目指すかも大きく表示します</li>
     <li>通知音は端末の<strong style="color:#0F172A;">メディア音量</strong>に従います。マナーモード時とメディア音量 0 のときは鳴りません</li>
     <li><strong style="color:#0F172A;">リスタート</strong>ボタン（地図左端の赤い札）を2秒以内に3回タップすると、それまでの通過を捨てて D から取り直せます</li>
+    <li><strong style="color:#0F172A;">次へ／戻る</strong>ボタン（地図左下のオレンジの札）で案内先を前後に動かせます。得点には影響しません
+      <ul style="margin:0.2rem 0 0;padding-left:1.2rem;">
+        <li><strong style="color:#0F172A;">次へ</strong>：案内をタスクの並びの次へ進めます。パイロンを飛ばすと E を挟まず次のパイロンを案内します。D・E も飛ばせます（LD より先は無し）</li>
+        <li><strong style="color:#0F172A;">戻る</strong>：直前の「次へ」を取り消します。取り消すものが無いときは、取ったパイロンや通過した E まで並びを1つずつさかのぼります（D より前には戻れません）。さかのぼった先のシリンダーに入るか、新しくパイロンを取る・E に入ると、元の案内に戻ります</li>
+      </ul>
+    </li>
   </ul>
 </div>
 
