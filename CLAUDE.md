@@ -20,7 +20,9 @@ GitHub Pagesで公開中：`https://kmrism.github.io/tombocup/`
 - `pylon-map.html`（パイロンマップ。OpenTopoMap＋Leaflet（cdnjs）の拡大できる地図。**JS・Leaflet CSS使用**。
   パイロン座標は TonboCup_2024.wpt／TonboCupGeo_2024.wpt を突き合わせて埋め込み、名称・得点は pylon-data.html の表から。
   OpenTopoMap の帰属表示（OpenStreetMap-Mitwirkende, SRTM／OpenTopoMap CC-BY-SA）を地図上に必ず出す。
-  下に印刷用の Pylon_Map.jpg／.pdf のダウンロードを残してある）
+  下に印刷用の Pylon_Map.jpg／.pdf のダウンロード）
+- `Pylon_Map.jpg`／`Pylon_Map.pdf`：OpenTopoMap にパイロン・200mシリンダー・得点表を載せた A4 縦（2480×3508px）。
+  ページも画像も `_tools/` のスクリプトで作り直す（手順は `_tools/README.md`。`_tools` は GitHub Pages に公開されない）
 - `osusume-task.html`（おすすめタスク。クラス切替のため**JS使用**）
 - `tonbo_task_builder.html`（タスクビルダー。**JS使用**）
 - `entry-member.html`（エントリー・とんぼ会員用）／`entry-visitor.html`（エントリー・ビジター用）
