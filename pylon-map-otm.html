@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>パイロンマップ（地形図・見本） | TOMBO CUP 2026</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+</head>
+<body style="margin:0;padding:0;background:#F8FAFC;color:#0F172A;font-family:system-ui,-apple-system,sans-serif;">
+<nav style="position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,0.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid #E2E8F0;padding:0 clamp(1rem,4vw,2rem);height:60px;display:flex;align-items:center;justify-content:space-between;gap:1rem;"><a href="index.html" style="font-size:1rem;font-weight:900;letter-spacing:0.12em;color:#0C4A6E;text-decoration:none;text-transform:uppercase;">Tombo Cup</a><div style="display:flex;gap:clamp(0.75rem,3.5vw,2rem);align-items:center;">
+    <a href="index.html#entry" style="font-size:0.8rem;letter-spacing:0.08em;text-decoration:none;white-space:nowrap;font-weight:800;color:#F97316;">Entry</a>
+    <a href="index.html#info" style="font-size:0.8rem;letter-spacing:0.08em;text-decoration:none;white-space:nowrap;font-weight:600;color:#64748B;">Info</a>
+    <a href="index.html#docs" style="font-size:0.8rem;letter-spacing:0.08em;text-decoration:none;white-space:nowrap;font-weight:600;color:#64748B;">Docs</a>
+  </div></nav><div style="background:linear-gradient(135deg,#0C4A6E 0%,#164E63 40%,#0891B2 80%,#06B6D4 100%);padding:7rem 1.5rem 2.5rem;text-align:center;"><div style="display:inline-block;font-size:0.65rem;font-weight:700;letter-spacing:0.35em;text-transform:uppercase;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.2);border-radius:3px;padding:0.28rem 0.8rem;margin-bottom:1.1rem;">Pylon Map</div><h1 style="font-size:clamp(1.7rem,5vw,2.6rem);font-weight:900;color:#fff;margin:0 0 0.5rem;letter-spacing:-0.02em;line-height:1.2;">パイロンマップ</h1><p style="color:rgba(255,255,255,0.7);font-size:0.82rem;letter-spacing:0.06em;margin:0;">地形図（OpenTopoMap）・拡大／移動できます</p></div>
+<div style="max-width:1100px;margin:0 auto;padding:1.25rem 1rem 3rem;">
+<div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;margin-bottom:0.75rem;">
+<span style="font-size:0.8rem;font-weight:700;color:#334155;">得点表示クラス</span>
+<span id="clsBtns" style="display:flex;gap:0.35rem;flex-wrap:wrap;"></span>
+<button id="locBtn" type="button" style="margin-left:auto;border:1px solid #0891B2;background:#FFFFFF;color:#0891B2;font-weight:700;font-size:0.8rem;border-radius:8px;padding:0.45rem 0.9rem;cursor:pointer;font-family:inherit;">📍 現在地</button>
+<button id="allBtn" type="button" style="border:1px solid #0891B2;background:#FFFFFF;color:#0891B2;font-weight:700;font-size:0.8rem;border-radius:8px;padding:0.45rem 0.9rem;cursor:pointer;font-family:inherit;">全体を表示</button>
+</div>
+<div id="map" style="height:min(72vh,680px);min-height:420px;border-radius:12px;border:1px solid #E2E8F0;box-shadow:0 1px 3px rgba(0,0,0,0.05);overflow:hidden;background:#E2E8F0;"></div>
+<p style="font-size:0.76rem;color:#64748B;line-height:1.7;margin:0.6rem 0 1.25rem;">円は半径200mのシリンダー。マーカーをタップすると名称・標高・座標・得点を表示します。座標は公式ウェイポイントファイル（TonboCup_2024.wpt）による。</p>
+<div id="chips" style="display:flex;flex-wrap:wrap;gap:0.4rem;"></div>
+</div>
+<footer style="background:#0C4A6E;color:rgba(255,255,255,0.5);text-align:center;padding:3rem 2rem 3.25rem;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;"><div style="margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,0.12);"><div style="text-transform:none;letter-spacing:0.02em;font-size:0.82rem;color:rgba(255,255,255,0.65);margin-bottom:0.95rem;">ご質問・お問い合わせはこちらから</div><a href="contact.html" style="display:inline-flex;align-items:center;gap:0.55rem;background:linear-gradient(135deg,#06B6D4,#0891B2);color:#fff;font-size:0.86rem;font-weight:800;letter-spacing:0.05em;text-transform:none;text-decoration:none;border-radius:10px;padding:0.85rem 2rem;box-shadow:0 5px 22px rgba(8,145,178,0.55);">✉️ とんぼカップ専用 問い合わせフォーム</a></div><div style="font-size:1.1rem;font-weight:900;color:rgba(255,255,255,0.9);letter-spacing:0.15em;margin-bottom:0.5rem;">TOMBO CUP 2026</div>Paragliding Competition · Fujinomiya, Shizuoka</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+// パイロン（TonboCup_2024.wpt と TonboCupGeo_2024.wpt を突き合わせて生成。手で書き換えない）
+var PYLONS = [{"c":"TO","n":"テイクオフ","lat":35.3751667,"lon":138.5461945,"alt":1071,"dms":"N35°22'30.6\" E138°32'46.3\"","pts":["—","—","—","—"]},{"c":"D","n":"タンク","lat":35.3719167,"lon":138.555167,"alt":716,"dms":"N35°22'18.9\" E138°33'18.6\"","pts":["50","50","40","30"]},{"c":"E","n":"怪鳥尾根","lat":35.3746112,"lon":138.5511667,"alt":872,"dms":"N35°22'28.6\" E138°33'04.2\"","pts":["—","—","—","—"]},{"c":"J","n":"旧とんぼLD","lat":35.3727222,"lon":138.5556389,"alt":717,"dms":"N35°22'21.8\" E138°33'20.3\"","pts":["120","110","100","90"]},{"c":"LD","n":"ランディング","lat":35.3690278,"lon":138.5531111,"alt":713,"dms":"N35°22'08.5\" E138°33'11.2\"","pts":["100","90","80","70"]},{"c":"G","n":"お墓","lat":35.3725556,"lon":138.5621389,"alt":722,"dms":"N35°22'21.2\" E138°33'43.7\"","pts":["250","230","200","180"]},{"c":"H","n":"農道十字路","lat":35.3663611,"lon":138.55875,"alt":705,"dms":"N35°21'58.9\" E138°33'31.5\"","pts":["200","180","160","140"]},{"c":"O","n":"陣馬尾根先端ピーク","lat":35.3621389,"lon":138.5522222,"alt":951,"dms":"N35°21'43.7\" E138°33'08.0\"","pts":["200","180","160","140"]},{"c":"K","n":"西富士TO","lat":35.3756389,"lon":138.5392222,"alt":1175,"dms":"N35°22'32.3\" E138°32'21.2\"","pts":["100","90","80","70"]},{"c":"F","n":"もちや","lat":35.3714445,"lon":138.5765277,"alt":752,"dms":"N35°22'17.2\" E138°34'35.5\"","pts":["400","360","320","280"]},{"c":"A","n":"アリーナ","lat":35.3841667,"lon":138.5830833,"alt":824,"dms":"N35°23'03.0\" E138°34'59.1\"","pts":["600","540","480","420"]},{"c":"M","n":"高圧鉄塔前尾根","lat":35.3685556,"lon":138.5305,"alt":1382,"dms":"N35°22'06.8\" E138°31'49.8\"","pts":["200","180","160","140"]},{"c":"N","n":"雪見岳","lat":35.3896666,"lon":138.5356111,"alt":1605,"dms":"N35°23'22.8\" E138°32'08.2\"","pts":["300","270","240","210"]},{"c":"Q","n":"東屋","lat":35.3481944,"lon":138.5521111,"alt":922,"dms":"N35°20'53.5\" E138°33'07.6\"","pts":["400","360","320","280"]},{"c":"P","n":"長者ヶ岳","lat":35.3412223,"lon":138.5347222,"alt":1335,"dms":"N35°20'28.4\" E138°32'05.0\"","pts":["350","320","280","250"]},{"c":"R","n":"天子ヶ岳","lat":35.329,"lon":138.5367777,"alt":1330,"dms":"N35°19'44.4\" E138°32'12.4\"","pts":["500","450","400","350"]}];
+var CLASSES = ['A・B', 'C', 'D', 'S'];
+var cls = 0;
+try { var c = Number(localStorage.getItem('otmClass')); if (c >= 0 && c < 4) cls = c; } catch (e) {}
+
+var map = L.map('map', { zoomControl: true, scrollWheelZoom: true });
+L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+  subdomains: 'abc', maxZoom: 17,
+  attribution: 'Kartendaten: &copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>-Mitwirkende, SRTM | ' +
+    'Kartendarstellung: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+}).addTo(map);
+
+function color(p) { return p.c === 'TO' ? '#F97316' : p.c === 'LD' ? '#16A34A' : p.c === 'D' ? '#DC2626' : '#0C4A6E'; }
+function icon(p) {
+  var w = p.c.length > 1 ? 30 : 24;
+  return L.divIcon({ className: '', iconSize: [w, 24], iconAnchor: [w / 2, 12],
+    html: '<div style="width:' + w + 'px;height:24px;border-radius:12px;background:' + color(p) + ';color:#fff;font:800 12px/24px system-ui,sans-serif;text-align:center;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,0.45);box-sizing:border-box;">' + p.c + '</div>' });
+}
+function popup(p) {
+  var pt = p.pts[cls];
+  return '<div style="font-family:system-ui,sans-serif;min-width:170px;">' +
+    '<div style="font-weight:800;font-size:15px;color:#0F172A;">' + p.c + '　' + p.n + '</div>' +
+    '<div style="font-size:12px;color:#334155;margin-top:4px;">標高 ' + p.alt + ' m</div>' +
+    '<div style="font-size:12px;color:#334155;">' + p.dms + '</div>' +
+    '<div style="font-size:12px;color:#334155;margin-top:4px;">得点（' + CLASSES[cls] + '）：<b>' + (pt === '—' ? '—' : pt + ' 点') + '</b></div></div>';
+}
+var markers = {};
+PYLONS.forEach(function (p) {
+  L.circle([p.lat, p.lon], { radius: 200, color: color(p), weight: 1.5, fillOpacity: 0.08 }).addTo(map);
+  markers[p.c] = L.marker([p.lat, p.lon], { icon: icon(p), title: p.c + ' ' + p.n }).addTo(map).bindPopup(function () { return popup(p); });
+});
+var bounds = L.latLngBounds(PYLONS.map(function (p) { return [p.lat, p.lon]; }));
+map.fitBounds(bounds, { padding: [20, 20] });
+document.getElementById('allBtn').onclick = function () { map.fitBounds(bounds, { padding: [20, 20] }); };
+
+// 得点表示のクラス切替
+function drawCls() {
+  document.getElementById('clsBtns').innerHTML = CLASSES.map(function (c, i) {
+    var on = i === cls;
+    return '<button type="button" data-i="' + i + '" style="border:1px solid ' + (on ? '#0891B2' : '#E2E8F0') + ';background:' + (on ? '#0891B2' : '#F8FAFC') + ';color:' + (on ? '#fff' : '#334155') + ';font-weight:700;font-size:0.78rem;border-radius:999px;padding:0.3rem 0.8rem;cursor:pointer;font-family:inherit;">' + c + '</button>';
+  }).join('');
+  Array.prototype.forEach.call(document.querySelectorAll('#clsBtns button'), function (b) {
+    b.onclick = function () { cls = Number(b.getAttribute('data-i')); try { localStorage.setItem('otmClass', cls); } catch (e) {} drawCls(); map.closePopup(); };
+  });
+}
+drawCls();
+
+// パイロン一覧（タップでその場所へ）
+document.getElementById('chips').innerHTML = PYLONS.map(function (p) {
+  return '<button type="button" data-c="' + p.c + '" style="display:inline-flex;align-items:center;gap:0.4rem;border:1px solid #E2E8F0;background:#fff;border-radius:999px;padding:0.3rem 0.75rem 0.3rem 0.3rem;cursor:pointer;font-family:inherit;font-size:0.8rem;color:#334155;white-space:nowrap;">' +
+    '<span style="display:inline-block;min-width:22px;height:22px;padding:0 4px;box-sizing:border-box;border-radius:11px;background:' + color(p) + ';color:#fff;font-weight:800;font-size:11px;line-height:22px;text-align:center;">' + p.c + '</span>' + p.n + '</button>';
+}).join('');
+Array.prototype.forEach.call(document.querySelectorAll('#chips button'), function (b) {
+  b.onclick = function () {
+    var m = markers[b.getAttribute('data-c')];
+    map.setView(m.getLatLng(), 15); m.openPopup();
+    document.getElementById('map').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
+});
+
+// 現在地（端末の位置情報を使う。許可されなければ何もしない）
+var me = null;
+document.getElementById('locBtn').onclick = function () { map.locate({ setView: true, maxZoom: 15, enableHighAccuracy: true }); };
+map.on('locationfound', function (e) {
+  if (me) map.removeLayer(me);
+  me = L.circleMarker(e.latlng, { radius: 7, color: '#fff', weight: 2, fillColor: '#2563EB', fillOpacity: 1 }).addTo(map).bindPopup('現在地');
+});
+map.on('locationerror', function () { alert('現在地を取得できませんでした（位置情報の許可を確認してください）'); });
+</script>
+</body>
+</html>

@@ -22,6 +22,9 @@ GitHub Pagesで公開中：`https://kmrism.github.io/tombocup/`
 - `tonbo_task_builder.html`（タスクビルダー。**JS使用**）
 - `entry-member.html`（エントリー・とんぼ会員用）／`entry-visitor.html`（エントリー・ビジター用）
   JSなしの静的フォーム。送信先はApps Scriptのウェブアプリ（下記「エントリー受付」）
+- `pylon-map-otm.html`（**見本・未リンク**。OpenTopoMap＋Leaflet（cdnjs）の拡大できるパイロンマップ。JS・Leaflet CSS使用。
+  パイロン座標は TonboCup_2024.wpt／TonboCupGeo_2024.wpt を突き合わせて埋め込み、名称・得点は pylon-data.html の表から。
+  OpenTopoMap の帰属表示（OpenStreetMap-Mitwirkende, SRTM／OpenTopoMap CC-BY-SA）を地図上に必ず出す）
 - `contact.html`（とんぼカップ専用 問い合わせフォーム。JSなし。送信先は同じApps Script、`type=contact`）
 - ダウンロード用アセット：`Pylon_Map.jpg` / `.pdf`、`TomboCup2026_Taikai_Yoko.pdf`、
   `TomboCup2026_Kyogi_Naiyou.pdf`、`TonboCup_2024.wpt` / `TonboCupGeo_2024.wpt` / `.cup` / `.gpx` / `.kml`
