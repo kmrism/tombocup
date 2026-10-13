@@ -17,14 +17,14 @@ GitHub Pagesで公開中：`https://kmrism.github.io/tombocup/`
 - `taikai-yoko.html`（大会要綱）
 - `kyogi-naiyou.html`（競技内容）
 - `pylon-data.html`（パイロンデータ・ウェイポイントDL）
-- `pylon-map.html`（パイロンマップ）
+- `pylon-map.html`（パイロンマップ。OpenTopoMap＋Leaflet（cdnjs）の拡大できる地図。**JS・Leaflet CSS使用**。
+  パイロン座標は TonboCup_2024.wpt／TonboCupGeo_2024.wpt を突き合わせて埋め込み、名称・得点は pylon-data.html の表から。
+  OpenTopoMap の帰属表示（OpenStreetMap-Mitwirkende, SRTM／OpenTopoMap CC-BY-SA）を地図上に必ず出す。
+  下に印刷用の Pylon_Map.jpg／.pdf のダウンロードを残してある）
 - `osusume-task.html`（おすすめタスク。クラス切替のため**JS使用**）
 - `tonbo_task_builder.html`（タスクビルダー。**JS使用**）
 - `entry-member.html`（エントリー・とんぼ会員用）／`entry-visitor.html`（エントリー・ビジター用）
   JSなしの静的フォーム。送信先はApps Scriptのウェブアプリ（下記「エントリー受付」）
-- `pylon-map-otm.html`（**見本・未リンク**。OpenTopoMap＋Leaflet（cdnjs）の拡大できるパイロンマップ。JS・Leaflet CSS使用。
-  パイロン座標は TonboCup_2024.wpt／TonboCupGeo_2024.wpt を突き合わせて埋め込み、名称・得点は pylon-data.html の表から。
-  OpenTopoMap の帰属表示（OpenStreetMap-Mitwirkende, SRTM／OpenTopoMap CC-BY-SA）を地図上に必ず出す）
 - `contact.html`（とんぼカップ専用 問い合わせフォーム。JSなし。送信先は同じApps Script、`type=contact`）
 - ダウンロード用アセット：`Pylon_Map.jpg` / `.pdf`、`TomboCup2026_Taikai_Yoko.pdf`、
   `TomboCup2026_Kyogi_Naiyou.pdf`、`TonboCup_2024.wpt` / `TonboCupGeo_2024.wpt` / `.cup` / `.gpx` / `.kml`
@@ -39,6 +39,7 @@ GitHub Pagesで公開中：`https://kmrism.github.io/tombocup/`
   - 例外：`entry-visitor.html` は ①郵便番号→都道府県・市区町村の自動入力 ②生年月日カレンダーを1990年1月から開く
     （空欄時だけ仮に1990-01-01を入れ、選ばずに離れたら空に戻す）の2つだけにJSを使う
     （zipcloud API `https://zipcloud.ibsnet.co.jp/api/search?zipcode=`、CORS対応を確認済み）。JS無効でも手入力で送信できる
+  - 例外：`pylon-map.html` は Leaflet（cdnjs の leaflet 1.9.4 の JS と CSS）で地図を表示する
   - `osusume-task.html` はクラス切替のためだけにJSを使う。JS無効でも
     `<noscript>` で全クラスのタスクが並んで見えるようにしてある（機能を殺さない）
 - 色・フォント・余白は全てstyle属性に直接指定する（外部CSSファイルなし）
@@ -66,6 +67,7 @@ GitHub Pagesで公開中：`https://kmrism.github.io/tombocup/`
 - 全16パイロン：A D E F G H J K M N O P Q R TO LD
   （E=怪鳥尾根は中央基点、TO=テイクオフ、LD=ランディング）
 - 正しい名称：H=農道十字路、O=陣馬尾根先端ピーク（似た誤記に注意）
+- 標高もウェイポイントファイルが正（M=1382、N=1605、Q=922。以前ページの表に 1377／1578／917 の誤記があった）
 
 ## タスクビルダー（tonbo_task_builder.html）の仕様
 - 未使用パイロンは**タップで追加**（プラン末尾へ）、プラン内は**タップで削除**
