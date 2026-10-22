@@ -40,7 +40,7 @@ const rows = P.map(p => `<tr><td style="padding:3px 6px;"><span style="display:i
   `<td style="padding:3px 6px;text-align:right;">${p.alt}</td>` + p.pts.map(x => `<td style="padding:3px 6px;text-align:right;">${x}</td>`).join('') + `</tr>`).join('');
 
 const page = `<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha512-h9FcoyWjHcOcmEVkxOfTLnmZFWIH0iZhZT1H2TbOq55xssQGEJHEaIm+PgoUaZbRvQTNTluNOEfb1ZRy6D3BOw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 <style>@page{size:A4 portrait;margin:0}html,body{margin:0;padding:0}.leaflet-control-attribution{font-size:13px!important;background:rgba(255,255,255,.9)!important;margin:0 16px 10px 0!important;padding:2px 8px!important;border-radius:4px}</style>
 </head><body style="font-family:'Yu Gothic UI','Meiryo',system-ui,sans-serif;">
 <div style="position:relative;width:1240px;height:1754px;overflow:hidden;">
@@ -54,7 +54,7 @@ const page = `<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8">
 <tr style="color:#64748B;font-size:12px;"><th></th><th style="text-align:left;padding:2px 8px;">パイロン</th><th style="padding:2px 6px;">北緯</th><th style="padding:2px 6px;">東経</th><th style="padding:2px 6px;">標高</th><th style="padding:2px 6px;">A・B</th><th style="padding:2px 6px;">C</th><th style="padding:2px 6px;">D</th><th style="padding:2px 6px;">S</th></tr>
 ${rows}</table></div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha512-puJW3E/qXDqYp9IfhAI54BJEaWIfloJ7JWs7OeD5i6ruC9JZL1gERT1wjtwXFlh7CjE7ZJ+/vcRZRkIYIb6p4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
 var P = ${JSON.stringify(P.map(p => ({ c: p.c, lat: p.lat, lon: p.lon })))};
 function color(c){return c==='TO'?'#F97316':c==='LD'?'#16A34A':c==='D'?'#DC2626':c==='E'?'#CA8A04':'#0C4A6E';}

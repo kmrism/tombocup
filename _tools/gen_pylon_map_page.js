@@ -53,7 +53,7 @@ const page = `<!DOCTYPE html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>パイロンマップ | TOMBO CUP 2026</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha512-h9FcoyWjHcOcmEVkxOfTLnmZFWIH0iZhZT1H2TbOq55xssQGEJHEaIm+PgoUaZbRvQTNTluNOEfb1ZRy6D3BOw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body style="margin:0;padding:0;background:#F8FAFC;color:#0F172A;font-family:system-ui,-apple-system,sans-serif;">
 ${NAV}<div style="background:linear-gradient(135deg,#0C4A6E 0%,#164E63 40%,#0891B2 80%,#06B6D4 100%);padding:7rem 1.5rem 2.5rem;text-align:center;"><div style="display:inline-block;font-size:0.65rem;font-weight:700;letter-spacing:0.35em;text-transform:uppercase;color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.2);border-radius:3px;padding:0.28rem 0.8rem;margin-bottom:1.1rem;">Pylon Map</div><h1 style="font-size:clamp(1.7rem,5vw,2.6rem);font-weight:900;color:#fff;margin:0 0 0.5rem;letter-spacing:-0.02em;line-height:1.2;">パイロンマップ</h1><p style="color:rgba(255,255,255,0.7);font-size:0.82rem;letter-spacing:0.06em;margin:0;">地形図（OpenTopoMap）・拡大／移動できます</p></div>
@@ -70,7 +70,7 @@ ${NAV}<div style="background:linear-gradient(135deg,#0C4A6E 0%,#164E63 40%,#0891
 <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:10px;padding:1.25rem 1.5rem;margin-top:1.5rem;"><div style="font-size:0.85rem;font-weight:700;color:#0F172A;margin-bottom:0.35rem;">&#128229; 印刷用パイロンマップ</div><p style="font-size:0.76rem;color:#64748B;line-height:1.7;margin:0 0 1rem;">OpenTopoMap の地形図に、公式ウェイポイントファイルのパイロンと得点表を載せた A4 縦の印刷用です。</p><div style="display:flex;flex-wrap:wrap;gap:0.75rem;"><a href="Pylon_Map.jpg" download style="display:inline-flex;align-items:center;gap:0.5rem;background:#FFFFFF;border:1.5px solid #E2E8F0;border-radius:8px;padding:0.7rem 1.4rem;text-decoration:none;color:#334155;font-size:0.85rem;font-weight:700;">&#128444;&#65039; Pylon Map.jpg <span style="font-size:0.68rem;background:#F1F5F9;border-radius:3px;padding:0.1rem 0.45rem;color:#64748B;">画像</span></a><a href="Pylon_Map.pdf" download style="display:inline-flex;align-items:center;gap:0.5rem;background:#FFFFFF;border:1.5px solid #E2E8F0;border-radius:8px;padding:0.7rem 1.4rem;text-decoration:none;color:#334155;font-size:0.85rem;font-weight:700;">&#128196; Pylon Map.pdf <span style="font-size:0.68rem;background:#F1F5F9;border-radius:3px;padding:0.1rem 0.45rem;color:#64748B;">PDF</span></a></div></div>
 </div>
 ${FOOTER}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha512-puJW3E/qXDqYp9IfhAI54BJEaWIfloJ7JWs7OeD5i6ruC9JZL1gERT1wjtwXFlh7CjE7ZJ+/vcRZRkIYIb6p4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
 // パイロン（TonboCup_2024.wpt と TonboCupGeo_2024.wpt を突き合わせて生成。手で書き換えない）
 var PYLONS = ${JSON.stringify(pylons)};
