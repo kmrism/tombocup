@@ -14,7 +14,7 @@ GitHub Pagesで公開中：`https://kmrism.github.io/tombocup/`
 
 ## ファイル構成（すべてリポジトリ直下）
 - `index.html`（トップページ）
-- `taikai-yoko.html`（大会要綱）
+- `taikai-yoko.html`（大会要項）
 - `kyogi-naiyou.html`（競技内容）
 - `pylon-data.html`（パイロンデータ・ウェイポイントDL）
 - `pylon-map.html`（パイロンマップ。OpenTopoMap＋Leaflet（cdnjs）の拡大できる地図。**JS・Leaflet CSS使用**。
