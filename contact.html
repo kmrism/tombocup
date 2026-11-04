@@ -86,14 +86,22 @@
 <script>
 // ボタン・カード類の押した手応え（押している間だけ少し縮んで暗くなる）。フォームの送信ボタンは送信用のコードが受け持つ
 (function () {
-  var SEL = 'button, a[style*="border-radius"]', cur = null;
+  var SEL = 'button, a', cur = null;
+  // ボタン扱いにするもの：button・角丸のリンク・画像だけのリンク（アプリのバナーなど）
+  function target(el) {
+    var t = el.closest && el.closest(SEL);
+    if (!t || t.disabled || (t.type === 'submit' && t.form)) return null;
+    if (t.tagName === 'A' && !/border-radius/.test(t.getAttribute('style') || '') &&
+        !(t.querySelector('img') && !t.textContent.trim())) return null;
+    return t;
+  }
   function up() {
     if (!cur) return;
     cur.style.transform = cur._pressT || ''; cur.style.filter = cur._pressF || ''; cur = null;
   }
   document.addEventListener('pointerdown', function (e) {
-    var t = e.target.closest && e.target.closest(SEL);
-    if (!t || t.disabled || (t.type === 'submit' && t.form)) return;
+    var t = target(e.target);
+    if (!t) return;
     up(); cur = t; t._pressT = t.style.transform; t._pressF = t.style.filter;
     if (!t.style.transition) t.style.transition = 'transform 0.08s ease, filter 0.08s ease';
     t.style.transform = 'scale(' + (t.offsetWidth > 300 ? 0.98 : 0.95) + ')';
