@@ -26,5 +26,62 @@
 </form>
 </div>
 <footer style="background:#0C4A6E;color:rgba(255,255,255,0.5);text-align:center;padding:3rem 2rem 3.25rem;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;"><div style="margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,0.12);"><div style="text-transform:none;letter-spacing:0.02em;font-size:0.82rem;color:rgba(255,255,255,0.65);margin-bottom:0.95rem;">ご質問・お問い合わせはこちらから</div><a href="contact.html" style="display:inline-flex;align-items:center;gap:0.55rem;background:linear-gradient(135deg,#06B6D4,#0891B2);color:#fff;font-size:0.86rem;font-weight:800;letter-spacing:0.05em;text-transform:none;text-decoration:none;border-radius:10px;padding:0.85rem 2rem;box-shadow:0 5px 22px rgba(8,145,178,0.55);"><span style="text-align:center;"><span style="white-space:nowrap;">✉️ とんぼカップ専用</span> <span style="white-space:nowrap;">問い合わせフォーム</span></span></a></div><div style="font-size:1.1rem;font-weight:900;color:rgba(255,255,255,0.9);letter-spacing:0.15em;margin-bottom:0.5rem;">TOMBO CUP 2026</div>Paragliding Competition · Fujinomiya, Shizuoka</footer>
+<script>
+(function () {
+  // 送信ボタン：押した手応え・送信中の表示・連打防止。送信はページ内で行い、結果もこのページに出す
+  // （Google の完了画面は、複数アカウントでログインしていると表示に失敗することがあるため）。JS 無効なら通常の送信
+  var f = document.querySelector('form'), btn = f && f.querySelector('button[type="submit"]');
+  if (!f || !btn) return;
+  var label = btn.innerHTML, busy = false, timer = null;
+  var msg = document.createElement('p');
+  msg.setAttribute('role', 'alert');
+  msg.style.cssText = 'display:none;font-size:0.86rem;color:#B91C1C;background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;padding:0.75rem 1rem;line-height:1.7;margin:0 auto 1rem;max-width:520px;text-align:left;';
+  btn.parentNode.insertBefore(msg, btn);
+  btn.style.transition = 'transform 0.08s ease, filter 0.08s ease, opacity 0.2s ease';
+  function press() { if (!busy) { btn.style.transform = 'scale(0.96)'; btn.style.filter = 'brightness(0.9)'; } }
+  function release() { btn.style.transform = ''; btn.style.filter = ''; }
+  btn.addEventListener('pointerdown', press);
+  ['pointerup', 'pointerleave', 'pointercancel'].forEach(function (t) { btn.addEventListener(t, release); });
+  // 1 行の入力欄で Enter（スマホの「開く」「確定」など）を押しても送信しない。日本語変換中の Enter はそのまま
+  f.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && !e.isComposing && e.keyCode !== 229 && e.target.tagName === 'INPUT') e.preventDefault();
+  });
+  function reset() {
+    busy = false; clearInterval(timer); release();
+    btn.disabled = false; btn.style.opacity = ''; btn.style.cursor = 'pointer'; btn.innerHTML = label;
+  }
+  window.addEventListener('pageshow', reset); // 戻るボタンで戻ったときに「送信中」のままにしない
+  function fail(text) { reset(); msg.textContent = text; msg.style.display = 'block'; }
+  f.addEventListener('submit', function (e) {
+    if (busy) { e.preventDefault(); return; }
+    busy = true; msg.style.display = 'none'; release();
+    btn.disabled = true; btn.style.opacity = '0.75'; btn.style.cursor = 'wait';
+    var n = 0;
+    btn.textContent = '送信中';
+    timer = setInterval(function () { n = (n + 1) % 4; btn.textContent = '送信中' + '...'.slice(0, n); }, 400);
+    if (!window.fetch || !window.URLSearchParams || !window.FormData) return; // 古いブラウザは通常の送信
+    e.preventDefault();
+    var body = new URLSearchParams(new FormData(f));
+    body.append('format', 'json');
+    fetch(f.action, { method: 'POST', body: body }).then(function (r) { return r.json(); }).then(function (d) {
+      if (!d || !d.title) throw new Error('bad response');
+      if (!d.ok) { fail(d.title + '：' + String(d.html).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim()); return; }
+      clearInterval(timer);
+      var box = document.createElement('div');
+      box.style.cssText = 'background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:2rem clamp(1rem,4vw,1.75rem);box-shadow:0 1px 3px rgba(0,0,0,0.05);color:#334155;font-size:0.95rem;line-height:1.8;text-align:center;';
+      var h = document.createElement('h2');
+      h.style.cssText = 'font-size:1.35rem;font-weight:900;color:#0F172A;margin:0 0 1rem;';
+      h.textContent = '✅ ' + d.title;
+      var c = document.createElement('div');
+      c.innerHTML = d.html; // 自分の Apps Script が返す完了文（名前はエスケープ済み）
+      box.appendChild(h); box.appendChild(c);
+      f.parentNode.replaceChild(box, f);
+      box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }).catch(function () {
+      fail('送信できませんでした。通信状況をご確認のうえ、もう一度ボタンを押してください。');
+    });
+  });
+})();
+</script>
 </body>
 </html>

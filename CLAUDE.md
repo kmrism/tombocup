@@ -26,8 +26,8 @@ GitHub Pagesで公開中：`https://kmrism.github.io/tombocup/`
 - `osusume-task.html`（おすすめタスク。クラス切替のため**JS使用**）
 - `tonbo_task_builder.html`（タスクビルダー。**JS使用**）
 - `entry-member.html`（エントリー・とんぼ会員用）／`entry-visitor.html`（エントリー・ビジター用）
-  JSなしの静的フォーム。送信先はApps Scriptのウェブアプリ（下記「エントリー受付」）
-- `contact.html`（とんぼカップ専用 問い合わせフォーム。JSなし。送信先は同じApps Script、`type=contact`）
+  静的フォーム（送信ボタンのJSのみ。下記）。送信先はApps Scriptのウェブアプリ（下記「エントリー受付」）
+- `contact.html`（とんぼカップ専用 問い合わせフォーム。送信ボタンのJSのみ。送信先は同じApps Script、`type=contact`）
 - ダウンロード用アセット：`Pylon_Map.jpg` / `.pdf`、`TomboCup2026_Taikai_Yoko.pdf`、
   `TomboCup2026_Kyogi_Naiyou.pdf`、`TonboCup_2024.wpt` / `TonboCupGeo_2024.wpt` / `.cup` / `.gpx` / `.kml`
 
@@ -41,6 +41,11 @@ GitHub Pagesで公開中：`https://kmrism.github.io/tombocup/`
   - 例外：`entry-visitor.html` は ①郵便番号→都道府県・市区町村の自動入力 ②生年月日カレンダーを1990年1月から開く
     （空欄時だけ仮に1990-01-01を入れ、選ばずに離れたら空に戻す）の2つだけにJSを使う
     （zipcloud API `https://zipcloud.ibsnet.co.jp/api/search?zipcode=`、CORS対応を確認済み）。JS無効でも手入力で送信できる
+  - 例外：`entry-member.html`・`entry-visitor.html`・`contact.html` は送信ボタンの JS（3ページ同じコード）を持つ：
+    押した手応え（縮む）・「送信中…」表示と連打防止・1行の入力欄で Enter を押しても送信しない（日本語変換中は除く）・
+    `fetch` で `format=json` を付けて送り、GAS が返す `{ok,title,html}` をページ内に表示（ok=false はボタンの上に赤字で出してフォームを残す）。
+    Google の完了画面は複数アカウントでログインしていると「script.google.com 接続が拒否されました」になるため（実際に起きた）。
+    JS 無効なら従来どおり普通の POST で Google の完了画面が出る
   - 例外：`pylon-map.html` は Leaflet（cdnjs の leaflet 1.9.4 の JS と CSS）で地図を表示する
   - `osusume-task.html` はクラス切替のためだけにJSを使う。JS無効でも
     `<noscript>` で全クラスのタスクが並んで見えるようにしてある（機能を殺さない）
@@ -109,7 +114,7 @@ GitHub Pagesで公開中：`https://kmrism.github.io/tombocup/`
   エントリー番号が偶数の行は条件付き書式で薄い青（#DDEBF7）。手動で整えたいときは GAS の `tidyTables` を実行
 - 受付のたびに `受付ログ` シートに記録し、管理者（GAS の `CONFIG.NOTIFY_TO`）へ通知メール。**申込者への自動メールは送らない**（連絡は手動。会員はLINE WORKS）
 - 二重送信対策：同じ名前（空白・全角半角を無視）の申込が10分以内に続いたら2件目は登録・通知しない（GASの CacheService。`CONFIG.DUP_MINUTES`）。
-  完了画面は同じものを出し、`受付ログ` に「重複（登録せず）」と残す
+  完了画面は同じものを出し、`受付ログ` に「重複（登録せず）」と残す。問い合わせも、同じ氏名＋内容が10分以内に続いたら記録・通知しない
 - 大量送信対策：申込＋問い合わせを合わせて1時間に20件まで（`CONFIG.RATE_LIMIT_PER_HOUR`）。超えたら登録せず「混み合っています」画面を出し、
   管理者に1時間に1通だけ知らせる
 - 入力をシートに書くときは必ず `safeText_` を通す（`=` `+` `-` `@` で始まる文字が数式として実行されないように。受付ログも同じ）
