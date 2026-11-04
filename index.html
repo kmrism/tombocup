@@ -197,5 +197,25 @@
   <a href="TonboCup_2024.gpx" download style="display:inline-flex;align-items:center;gap:0.5rem;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:6px;padding:0.55rem 1rem;text-decoration:none;color:#334155;font-size:1.15rem;font-weight:600;flex-wrap:wrap;max-width:100%;min-width:min(100%, calc((380px - 100cqw) * 999));box-sizing:border-box;">📁 TonboCup 2024.gpx <span style="flex-basis:calc((380px - 100cqw) * 999);max-width:100%;white-space:nowrap;"><span style="font-size:0.75rem;background:#F1F5F9;border-radius:3px;padding:0.1rem 0.45rem;color:#64748B;">GPX</span></span></a>
   <a href="TonboCup_2024.kml" download style="display:inline-flex;align-items:center;gap:0.5rem;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:6px;padding:0.55rem 1rem;text-decoration:none;color:#334155;font-size:1.15rem;font-weight:600;flex-wrap:wrap;max-width:100%;min-width:min(100%, calc((380px - 100cqw) * 999));box-sizing:border-box;">📁 TonboCup 2024.kml <span style="flex-basis:calc((380px - 100cqw) * 999);max-width:100%;white-space:nowrap;"><span style="font-size:0.75rem;background:#F1F5F9;border-radius:3px;padding:0.1rem 0.45rem;color:#64748B;">Google Earth</span></span></a>
 </div></div><footer style="background:#0C4A6E;color:rgba(255,255,255,0.5);text-align:center;padding:3rem 2rem 3.25rem;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;"><div style="margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,0.12);"><div style="text-transform:none;letter-spacing:0.02em;font-size:0.82rem;color:rgba(255,255,255,0.65);margin-bottom:0.95rem;">ご質問・お問い合わせはこちらから</div><a href="contact.html" style="display:inline-flex;align-items:center;gap:0.55rem;background:linear-gradient(135deg,#06B6D4,#0891B2);color:#fff;font-size:0.86rem;font-weight:800;letter-spacing:0.05em;text-transform:none;text-decoration:none;border-radius:10px;padding:0.85rem 2rem;box-shadow:0 5px 22px rgba(8,145,178,0.55);"><span style="text-align:center;"><span style="white-space:nowrap;">✉️ とんぼカップ専用</span> <span style="white-space:nowrap;">問い合わせフォーム</span></span></a></div><div style="font-size:1.1rem;font-weight:900;color:rgba(255,255,255,0.9);letter-spacing:0.15em;margin-bottom:0.5rem;">TOMBO CUP 2026</div>Paragliding Competition · Fujinomiya, Shizuoka</footer>
+<script>
+// ボタン・カード類の押した手応え（押している間だけ少し縮んで暗くなる）。フォームの送信ボタンは送信用のコードが受け持つ
+(function () {
+  var SEL = 'button, a[style*="border-radius"]', cur = null;
+  function up() {
+    if (!cur) return;
+    cur.style.transform = cur._pressT || ''; cur.style.filter = cur._pressF || ''; cur = null;
+  }
+  document.addEventListener('pointerdown', function (e) {
+    var t = e.target.closest && e.target.closest(SEL);
+    if (!t || t.disabled || (t.type === 'submit' && t.form)) return;
+    up(); cur = t; t._pressT = t.style.transform; t._pressF = t.style.filter;
+    if (!t.style.transition) t.style.transition = 'transform 0.08s ease, filter 0.08s ease';
+    t.style.transform = 'scale(' + (t.offsetWidth > 300 ? 0.98 : 0.95) + ')';
+    t.style.filter = 'brightness(0.92)';
+  });
+  ['pointerup', 'pointercancel', 'dragstart'].forEach(function (n) { document.addEventListener(n, up, true); });
+  window.addEventListener('pageshow', up);
+})();
+</script>
 </body>
 </html>

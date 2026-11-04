@@ -46,6 +46,9 @@ GitHub Pagesで公開中：`https://kmrism.github.io/tombocup/`
     `fetch` で `format=json` を付けて送り、GAS が返す `{ok,title,html}` をページ内に表示（ok=false はボタンの上に赤字で出してフォームを残す）。
     Google の完了画面は複数アカウントでログインしていると「script.google.com 接続が拒否されました」になるため（実際に起きた）。
     JS 無効なら従来どおり普通の POST で Google の完了画面が出る
+  - 例外：全ページの `</body>` 直前に「押した手応え」の共通スクリプト（同じコード）。`button` と `border-radius` を持つ `<a>` を、
+    押している間だけ縮めて（幅300px超は0.98、ほかは0.95）暗くする。フォームの送信ボタンは送信用のコードが受け持つので除外。
+    新しいページを作ったら同じスクリプトを入れる。タスクビルダーのパイロンのチップ（div）は対象外（長押しドラッグがあるため）
   - 例外：`pylon-map.html` は Leaflet（cdnjs の leaflet 1.9.4 の JS と CSS）で地図を表示する
   - `osusume-task.html` はクラス切替のためだけにJSを使う。JS無効でも
     `<noscript>` で全クラスのタスクが並んで見えるようにしてある（機能を殺さない）

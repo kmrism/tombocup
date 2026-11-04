@@ -97,5 +97,25 @@ map.on('locationfound', function (e) {
 });
 map.on('locationerror', function () { alert('現在地を取得できませんでした（位置情報の許可を確認してください）'); });
 </script>
+<script>
+// ボタン・カード類の押した手応え（押している間だけ少し縮んで暗くなる）。フォームの送信ボタンは送信用のコードが受け持つ
+(function () {
+  var SEL = 'button, a[style*="border-radius"]', cur = null;
+  function up() {
+    if (!cur) return;
+    cur.style.transform = cur._pressT || ''; cur.style.filter = cur._pressF || ''; cur = null;
+  }
+  document.addEventListener('pointerdown', function (e) {
+    var t = e.target.closest && e.target.closest(SEL);
+    if (!t || t.disabled || (t.type === 'submit' && t.form)) return;
+    up(); cur = t; t._pressT = t.style.transform; t._pressF = t.style.filter;
+    if (!t.style.transition) t.style.transition = 'transform 0.08s ease, filter 0.08s ease';
+    t.style.transform = 'scale(' + (t.offsetWidth > 300 ? 0.98 : 0.95) + ')';
+    t.style.filter = 'brightness(0.92)';
+  });
+  ['pointerup', 'pointercancel', 'dragstart'].forEach(function (n) { document.addEventListener(n, up, true); });
+  window.addEventListener('pageshow', up);
+})();
+</script>
 </body>
 </html>
