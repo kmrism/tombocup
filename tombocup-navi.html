@@ -50,9 +50,11 @@
 
 <div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:1.75rem;margin-bottom:1.25rem;box-shadow:0 1px 3px rgba(0,0,0,0.05);"><div style="font-size:0.95rem;font-weight:800;color:#0F172A;margin-bottom:1.2rem;padding-bottom:0.85rem;border-bottom:1px solid #E2E8F0;display:flex;align-items:center;gap:0.5rem;">&#9992;&#65039; 飛行中</div>
   <ul style="margin:0;padding-left:1.2rem;font-size:0.88rem;color:#334155;line-height:1.9;">
+    <li><strong style="color:#0F172A;">全画面表示</strong>。ステータスバーとナビゲーションバーを隠し、その分を地図とパイロン一覧に使います</li>
     <li>スタートからの<strong style="color:#0F172A;">経過時間</strong>と<strong style="color:#0F172A;">積み上がった合計得点</strong>を画面上部に常時表示（右下に満点も併記）</li>
     <li><strong style="color:#0F172A;">次のパイロン</strong>（記号・名称・シリンダー縁までの距離・方位）。案内はタスクの並びをそのままなぞります。予定にないパイロンをたまたま通っても案内は進みません</li>
     <li>案内線はシリンダーの中心ではなく、<strong style="color:#0F172A;">200m 円のいちばん近いところ</strong>を指します</li>
+    <li>地図の下に<strong style="color:#0F172A;">全パイロンのチップ</strong>（記号・名称・得点）を並べます。タスクのパイロンが先、使わないパイロンが後ろ。次に目指すパイロンは紺地に黄色の枠、区間で取ったが E に戻る前のものはオレンジ、得点が確定したものは灰色になります。大きい文字設定の端末でも記号・得点が切れないよう、幅に合わせて字を縮めます</li>
     <li>地図に自機・次パイロンのシリンダー・最短ルート・飛行トラックを表示。全パイロンの 200m シリンダーを半透明で描き、次のパイロンだけ濃くします</li>
     <li>地図の向きは「進行方向が上」（既定）／「北が上」を切り替え可能。向きと縮尺は次のフライトにも引き継がれます</li>
     <li><strong style="color:#0F172A;">画面の1/4を5秒間</strong>覆うバナー＋通知音でパイロン取得・E 帰還・LD 通過を知らせます。次にどこを目指すかも大きく表示します</li>
@@ -64,6 +66,8 @@
         <li><strong style="color:#0F172A;">戻る</strong>：直前の「次へ」を取り消します。取り消すものが無いときは、取ったパイロンや通過した E まで並びを1つずつさかのぼります（D より前には戻れません）。さかのぼった先のシリンダーに入るか、新しくパイロンを取る・E に入ると、元の案内に戻ります</li>
       </ul>
     </li>
+    <li>いちばん下の<strong style="color:#0F172A;">「フライトを終了」</strong>ボタンでフライトを終えます。LD を通過したあとは<strong style="color:#0F172A;">「ランディング完了」</strong>に変わります。LD を通過する前に押すと、ゴールしていないので 0点になる旨を確認してから終了します</li>
+    <li><strong style="color:#0F172A;">横向き</strong>にも対応しています。左に次のパイロンと地図、右に経過時間・得点、チップ、終了ボタンを並べます</li>
   </ul>
 </div>
 
@@ -74,6 +78,7 @@
     <li>合計得点／満点との差</li>
     <li>加点されなかった通過とその理由</li>
     <li>リスタートしていれば、打ち切った過去のフライトも「◯回目のフライト」として同じ形式で並びます</li>
+    <li>保存した<strong style="color:#0F172A;">フライトログ（IGC）の保存先とファイル名</strong>（例 <code style="background:#F1F5F9;border-radius:4px;padding:0.1rem 0.35rem;font-size:0.82em;">Download/TomboCupNavi/20261108_1015-1240_tombo.igc</code>）</li>
   </ul>
   <div style="font-size:0.82rem;color:#64748B;line-height:1.8;margin-top:1rem;padding-left:0.85rem;border-left:3px solid #0891B2;">LD はシリンダーに入った時点で得点になりますが、フライトはそこで終わりません。「ランディング完了」を押すまで次のパイロンを案内し続けます。</div>
 </div>
@@ -119,9 +124,16 @@
     <li>位置情報の許可（フォアグラウンド）と通知の許可が必要です。飛行中は画面が消えない設定になります</li>
     <li><strong style="color:#0F172A;">競技エリア一帯の地図は最初からアプリに入っている</strong>ので、圏外でも表示できます。地図データは &copy; OpenStreetMap contributors</li>
     <li>アプリが落ちても、シリンダーの出入りは都度保存しているので再起動して続きから再開できます</li>
+    <li><strong style="color:#0F172A;">フライトログ（IGC）</strong>：フライト開始から終了まで、GPS の測位を1秒ごとに IGC 形式で記録します。終了すると端末の <code style="background:#F1F5F9;border-radius:4px;padding:0.1rem 0.35rem;font-size:0.82em;">Download/TomboCupNavi/</code> に <code style="background:#F1F5F9;border-radius:4px;padding:0.1rem 0.35rem;font-size:0.82em;">年月日_開始時分-終了時分_tombo.igc</code> の名前で保存します。XContest などにそのままアップロードできます
+      <ul style="margin:0.2rem 0 0;padding-left:1.2rem;">
+        <li>記録中はアプリ内に追記しているので、アプリが落ちても再開すれば同じログに続けて書きます</li>
+        <li>シミュレーションでは記録しません</li>
+        <li>高度は GPS の値です（気圧センサーは使わないので気圧高度は 0）。IGC 認定の記録計ではありません（電子署名なし）</li>
+      </ul>
+    </li>
     <li>位置情報は Play Services を使わず GPS を直接読むので、圏外でも Google Play が無い端末でも動きます</li>
   </ul>
-  <div style="font-size:0.82rem;color:#64748B;line-height:1.8;margin-top:1rem;padding-left:0.85rem;border-left:3px solid #94A3B8;"><strong>今回入れていないもの：</strong>IGC ログ出力（大会要項の必要装備。ナビ機能とは独立）／昇降率・対地速度などのバリオ機能</div>
+  <div style="font-size:0.82rem;color:#64748B;line-height:1.8;margin-top:1rem;padding-left:0.85rem;border-left:3px solid #94A3B8;"><strong>今回入れていないもの：</strong>昇降率・対地速度などのバリオ機能</div>
 </div>
 
 <div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:1.75rem;margin-bottom:1.25rem;box-shadow:0 1px 3px rgba(0,0,0,0.05);"><div style="font-size:0.95rem;font-weight:800;color:#0F172A;margin-bottom:1.2rem;padding-bottom:0.85rem;border-bottom:1px solid #E2E8F0;display:flex;align-items:center;gap:0.5rem;">&#128221; 変更履歴</div>
