@@ -445,6 +445,8 @@ const QR_RADIUS=200;           // 各パイロンのシリンダー半径
 function tod(h,m,s){ const u=(h-9+24)%24;
   return String(u).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')+'Z'; }
 
+// 作るのは非圧縮の「XCTSK:」だけ。圧縮版の「XCTSKZ:」（V2Z）は XCTrack 0.9.12.6 で読めなかったので作らない。
+// （TomboCupナビは XCTSKZ も読めるが、作るのは同じく非圧縮だけ）
 function buildXCTSK(){
   const seq=sequence();                         // TO, D, E自動…, LD を含む実際の並び
   const route=seq.map(n=>n.code);
