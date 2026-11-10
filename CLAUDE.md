@@ -103,6 +103,8 @@ GitHub Pagesで公開中：`https://kmrism.github.io/tombocup/`
   実行委員長：遠藤聡／競技委員長：阿知波広和
 - 参加費：とんぼクラブ会員3,000円・ビジター6,000円（非課税）／申込締切：なし（サイトから削除済み）
 - エントリー：サイト内の `entry-member.html`（会員）／`entry-visitor.html`（ビジター）。form.runは廃止
+- **エントリー受付は終了（2026-11-10）**：トップ（ヒーロー・エントリー欄）と大会要項のエントリーボタンは「エントリー受付は終了しました」の押せない表示（`<span aria-disabled>`）に置き換え済み。
+  フォームのページ自体は残っている（URLを直接開けば送信できる）
 
 ## エントリー受付（Apps Script ＋ スプレッドシート）
 - フォームは `<form method="post">` で Apps Script ウェブアプリ（`https://script.google.com/macros/s/AKfycbwO2dHcwlbc441Fw0pp_8xtqQv-reqakjZKxMAK5UK6JBFX4LX73yy212ws_AiX20nj/exec`）へ送信
